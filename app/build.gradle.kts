@@ -40,6 +40,9 @@ android {
 }
 
 dependencies{
+    implementation(project(Modules.core))
+    implementation(project(Modules.playersPresentation))
+    implementation(project(Modules.herosPresentation))
 
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.appCompat)

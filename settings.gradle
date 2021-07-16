@@ -6,4 +6,15 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "DotaInfo"
+
 include ":app"
+
+include ":core"
+
+include ":heros:herosBusiness"
+include ":heros:herosPresentation"
+
+include ":players:business"
+include ":players:presentation"
+
+
