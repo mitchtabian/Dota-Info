@@ -1,10 +1,13 @@
-package com.codingwithmitch.topplayerservice
+package com.codingwithmitch.topplayerservice.model
 
 import com.codingwithmitch.player.Player
 import com.codingwithmitch.player.Profile
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * Data model for https://api.opendota.com/api/players/268590680
+ */
 @Serializable
 data class TopPlayerDto(
 

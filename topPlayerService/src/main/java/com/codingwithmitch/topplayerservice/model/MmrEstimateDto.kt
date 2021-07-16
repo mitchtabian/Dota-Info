@@ -1,4 +1,4 @@
-package com.codingwithmitch.topplayerservice
+package com.codingwithmitch.topplayerservice.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
