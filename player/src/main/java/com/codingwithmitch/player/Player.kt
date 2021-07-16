@@ -1,4 +1,9 @@
 package com.codingwithmitch.player
 
-class Player {
-}
+data class Player(
+    val soloCompetitiveRank: Int? = null,
+    val profile: Profile,
+    val leaderBoardRank: Int? = null,
+    val competitiveRank: Int? = null,
+    val mmrEstimate: Int? = null,
+)
