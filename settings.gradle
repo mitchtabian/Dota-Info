@@ -13,7 +13,13 @@ include ":core"
 
 include ':hero'
 
+include ':heroCache'
+
 include ':heroDetailUI'
+
+include ':heroInteractors'
+
+include ':heroService'
 
 include ':herosUI'
 
@@ -21,8 +27,14 @@ include ':navigation'
 
 include ':player'
 
+include ':topPlayerCache'
+
+include ':topPlayerDetailUI'
+
+include ':topPlayerInteractors'
+
 include ':topPlayersUI'
 
-include ':topPlayersDetailUI'
+include ':topPlayerService'
 
-include ':heroInteractors'
+

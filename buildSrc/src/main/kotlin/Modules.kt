@@ -6,15 +6,27 @@ object Modules {
 
     const val hero = ":hero"
 
-    const val herosUI = ":herosUI"
+    const val heroCache = ":heroCache"
 
     const val heroDetailUI = ":heroDetailUI"
+
+    const val heroInteractors = ":heroInteractors"
+
+    const val heroService = ":heroService"
+
+    const val herosUI = ":herosUI"
 
     const val navigation = ":navigation"
 
     const val player = ":player"
 
+    const val topPlayerCache = ":topPlayerCache"
+
     const val topPlayersUI = ":topPlayersUI"
 
-    const val topPlayersDetailUI = ":topPlayersDetailUI"
+    const val topPlayerDetailUI = ":topPlayerDetailUI"
+
+    const val topPlayerService = ":topPlayerService"
+
+    const val topPlayerInteractors = ":topPlayerInteractors"
 }
