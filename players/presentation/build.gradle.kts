@@ -4,5 +4,6 @@ apply {
 
 
 dependencies {
+    "implementation"(project(Modules.navigation))
     "implementation"(project(Modules.playersBusiness))
 }

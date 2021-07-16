@@ -2,9 +2,9 @@ package com.codingwithmitch.dotainfo.presentation
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import com.codingwithmitch.dotainfo.business.HeroData
+import com.codingwithmitch.dotainfo.business.PlayerData
 
 @Composable
-fun HeroScreen(){
-    Text(HeroData().name())
+fun TopPlayers(){
+    Text(PlayerData().name())
 }

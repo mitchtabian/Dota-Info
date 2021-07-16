@@ -5,4 +5,6 @@ apply {
 
 dependencies {
     "implementation"(project(Modules.herosBusiness))
+
+    "implementation"(project(Modules.navigation))
 }

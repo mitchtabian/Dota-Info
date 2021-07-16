@@ -14,7 +14,10 @@ include ":core"
 include ':heros:business'
 include ':heros:presentation'
 
+include ':navigation'
+
 include ":players:business"
 include ":players:presentation"
+
 
 
