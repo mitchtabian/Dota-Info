@@ -4,6 +4,8 @@ object Modules {
 
     const val core = ":core"
 
+    const val constants = ":constants"
+
     const val hero = ":hero"
 
     const val heroCache = ":heroCache"

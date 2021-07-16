@@ -9,6 +9,8 @@ rootProject.name = "DotaInfo"
 
 include ":app"
 
+include ':constants'
+
 include ":core"
 
 include ':hero'
@@ -36,5 +38,6 @@ include ':topPlayerInteractors'
 include ':topPlayersUI'
 
 include ':topPlayerService'
+
 
 
