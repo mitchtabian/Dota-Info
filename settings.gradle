@@ -11,8 +11,8 @@ include ":app"
 
 include ":core"
 
-include ":heros:herosBusiness"
-include ":heros:herosPresentation"
+include ':heros:business'
+include ':heros:presentation'
 
 include ":players:business"
 include ":players:presentation"

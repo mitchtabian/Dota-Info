@@ -1,4 +1,4 @@
-package com.codingwithmitch.dotainfo.herosBusiness
+package com.codingwithmitch.dotainfo.business
 
 class HeroData {
 

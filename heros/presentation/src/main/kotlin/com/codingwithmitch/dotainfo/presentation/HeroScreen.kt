@@ -1,8 +1,8 @@
-package com.codingwithmitch.dotainfo.herosPresentation
+package com.codingwithmitch.dotainfo.presentation
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import com.codingwithmitch.dotainfo.herosBusiness.HeroData
+import com.codingwithmitch.dotainfo.business.HeroData
 
 @Composable
 fun HeroScreen(){
