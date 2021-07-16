@@ -41,9 +41,9 @@ android {
 
 dependencies{
     implementation(project(Modules.core))
-    implementation(project(Modules.herosPresentation))
+    implementation(project(Modules.herosUI))
     implementation(project(Modules.navigation))
-    implementation(project(Modules.playersPresentation))
+    implementation(project(Modules.topPlayersUI))
 
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.appCompat)

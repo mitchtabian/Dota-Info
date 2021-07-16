@@ -9,9 +9,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.codingwithmitch.dotainfo.presentation.navigation.DotaInfoBottomNavigation
-import com.codingwithmitch.dotainfo.presentation.navigation.HerosDestination
-import com.codingwithmitch.dotainfo.presentation.navigation.TopPlayersDestination
 import com.codingwithmitch.dotainfo.presentation.theme.DotaInfoTheme
+import com.codingwithmitch.herosui.Heros
+import com.codingwithmitch.herosui.navigation.HerosDestination
+import com.codingwithmitch.topplayersui.TopPlayers
+import com.codingwithmitch.topplayersui.navigation.TopPlayersDestination
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -42,7 +44,7 @@ class MainActivity : ComponentActivity() {
 
 private fun NavGraphBuilder.addTopPlayers() {
     composable(TopPlayersDestination.route()){
-        TopPlayers()
+        TopPlayers({})
     }
 }
 

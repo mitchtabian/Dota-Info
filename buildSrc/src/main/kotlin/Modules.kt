@@ -1,13 +1,20 @@
 object Modules {
 
     const val app = ":app"
+
     const val core = ":core"
 
-    const val herosBusiness = ":heros:business"
-    const val herosPresentation = ":heros:presentation"
+    const val hero = ":hero"
+
+    const val herosUI = ":herosUI"
+
+    const val heroDetailUI = ":heroDetailUI"
 
     const val navigation = ":navigation"
 
-    const val playersBusiness = ":players:business"
-    const val playersPresentation = ":players:presentation"
+    const val player = ":player"
+
+    const val topPlayersUI = ":topPlayersUI"
+
+    const val topPlayersDetailUI = ":topPlayersDetailUI"
 }
