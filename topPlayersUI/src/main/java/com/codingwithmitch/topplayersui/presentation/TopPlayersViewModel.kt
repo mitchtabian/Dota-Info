@@ -38,15 +38,12 @@ constructor(
     }
 
     private fun getPlayers(){
-        Log.d(TAG, "getPlayers: called.")
         getPlayers.execute().onEach { dataState ->
-            Log.d(TAG, "getPlayers: state: ${dataState}")
             when(dataState){
                 is DataState.Loading -> {
                     state.value = state.value.copy(progressState = dataState.progressBarState)
                 }
                 is DataState.Data -> {
-                    Log.d(TAG, "getPlayers: ${dataState.data?: listOf()}")
                     state.value = state.value.copy(players = dataState.data?: listOf())
                 }
                 is DataState.Response -> {
