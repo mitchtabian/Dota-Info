@@ -19,21 +19,28 @@ class GetPlayers(
         // show loading state
         emit(DataState.Loading(ProgressBarState.Loading))
         try {
-            withTimeout(NETWORK_TIMEOUT){ // throws TimeoutCancellationException
+//            withTimeout(NETWORK_TIMEOUT){ // throws TimeoutCancellationException
 
                 // get the id's
                 val playersByRank = service.getAccountIds()
 
                 // use the id's to search each individual player
                 val players: MutableList<Player> = mutableListOf()
-                for(account in playersByRank){
-                    val player = service.getPlayerDto(account.accountId).toPlayer()
+                for(index in 0 .. 2){
+                    val player = service.getPlayerDto(playersByRank.get(index).accountId).toPlayer()
                     if(player != null){
                         players.add(player)
                     }
                 }
+            // I need an api key or something because the api limits me
+//                for(account in playersByRank){
+//                    val player = service.getPlayerDto(account.accountId).toPlayer()
+//                    if(player != null){
+//                        players.add(player)
+//                    }
+//                }
                 emit(DataState.Data<List<Player>>(data = players))
-            }
+//            }
         }catch (e: Exception){
             e.printStackTrace()
             emit(DataState.Response<List<Player>>(

@@ -16,7 +16,7 @@ data class ProfileDto(
     val name: String? = null,
 
     @SerialName("steamid")
-    val steamId: Int? = null,
+    val steamId: String? = null,
 
     @SerialName("avatar")
     val avatar: String? = null,

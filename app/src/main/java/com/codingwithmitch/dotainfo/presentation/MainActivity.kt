@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.Scaffold
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -12,7 +14,8 @@ import com.codingwithmitch.dotainfo.presentation.navigation.DotaInfoBottomNaviga
 import com.codingwithmitch.dotainfo.presentation.theme.DotaInfoTheme
 import com.codingwithmitch.herosui.Heros
 import com.codingwithmitch.herosui.navigation.HerosDestination
-import com.codingwithmitch.topplayersui.TopPlayers
+import com.codingwithmitch.topplayersui.presentation.TopPlayers
+import com.codingwithmitch.topplayersui.presentation.TopPlayersViewModel
 import com.codingwithmitch.topplayersui.navigation.TopPlayersDestination
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,7 +35,7 @@ class MainActivity : ComponentActivity() {
                         navController = navController,
                         startDestination = TopPlayersDestination.route(),
                         builder = {
-                            addTopPlayers()
+                            addTopPlayers(navController)
                             addHeros()
                         }
                     )
@@ -42,9 +45,16 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-private fun NavGraphBuilder.addTopPlayers() {
+private fun NavGraphBuilder.addTopPlayers(
+    navController: NavController,
+) {
     composable(TopPlayersDestination.route()){
-        TopPlayers({})
+        val viewModel: TopPlayersViewModel = hiltViewModel()
+        TopPlayers(
+            state = viewModel.state.value,
+            events = viewModel::onTriggerEvent,
+            navController = navController
+        )
     }
 }
 

@@ -4,7 +4,7 @@ data class Profile(
     val accountId: Int,
     val personaName: String? = null,
     val name: String? = null,
-    val steamId: Int? = null,
+    val steamId: String? = null,
     val avatar: String? = null,
     val avatarMedium: String? = null,
     val avatarFull: String? = null,

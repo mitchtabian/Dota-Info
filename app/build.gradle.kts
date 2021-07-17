@@ -40,14 +40,37 @@ android {
 }
 
 dependencies{
+
     implementation(project(Modules.core))
+
+    implementation(project(Modules.hero))
+
     implementation(project(Modules.herosUI))
+
+    implementation(project(Modules.heroDetailUI))
+
+    implementation(project(Modules.heroService))
+
+    implementation(project(Modules.heroCache))
+
+    implementation(project(Modules.heroInteractors))
+
     implementation(project(Modules.navigation))
+
+    implementation(project(Modules.player))
+
     implementation(project(Modules.topPlayersUI))
+
+    implementation(project(Modules.topPlayerDetailUI))
+
+    implementation(project(Modules.topPlayerService))
+
+    implementation(project(Modules.topPlayerCache))
+
+    implementation(project(Modules.topPlayerInteractors))
 
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.appCompat)
-    implementation(AndroidX.lifecycleRuntime)
     implementation(AndroidX.lifecycleVmKtx)
 
     implementation(Compose.activity)
@@ -62,6 +85,8 @@ dependencies{
 
     implementation(Hilt.android)
     kapt(Hilt.compiler)
+
+    implementation(Ktor.core)
 }
 
 

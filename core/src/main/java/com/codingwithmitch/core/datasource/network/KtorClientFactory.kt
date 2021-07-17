@@ -1,4 +1,4 @@
-package com.codingwithmitch.topplayerservice
+package com.codingwithmitch.core.datasource.network
 
 import io.ktor.client.*
 import io.ktor.client.engine.android.*

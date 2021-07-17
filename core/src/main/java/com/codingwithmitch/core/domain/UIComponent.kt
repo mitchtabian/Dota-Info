@@ -10,16 +10,16 @@ sealed class UIComponent{
     data class Toast(
         val text: String,
         val duration: Int
-    )
+    ): UIComponent()
 
     data class SnackBar(
         val text: String,
         val duration: Int,
-    )
+    ): UIComponent()
     
     data class None(
         val message: String,
-    )
+    ): UIComponent()
 }
 
 
