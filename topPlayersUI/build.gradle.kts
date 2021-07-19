@@ -8,6 +8,4 @@ dependencies {
     "implementation"(project(Modules.player))
     "implementation"(project(Modules.topPlayerDetailUI))
     "implementation"(project(Modules.topPlayerInteractors))
-
-//    "implementation"(project(Modules.app))
 }
