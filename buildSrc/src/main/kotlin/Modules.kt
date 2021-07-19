@@ -7,28 +7,9 @@ object Modules {
     const val constants = ":constants"
 
     const val hero = ":hero"
-
-    const val heroCache = ":heroCache"
-
-    const val heroDetailUI = ":heroDetailUI"
-
-    const val heroInteractors = ":heroInteractors"
-
-    const val heroService = ":heroService"
-
-    const val herosUI = ":herosUI"
-
-    const val navigation = ":navigation"
-
-    const val player = ":player"
-
-    const val topPlayerCache = ":topPlayerCache"
-
-    const val topPlayersUI = ":topPlayersUI"
-
-    const val topPlayerDetailUI = ":topPlayerDetailUI"
-
-    const val topPlayerService = ":topPlayerService"
-
-    const val topPlayerInteractors = ":topPlayerInteractors"
+    const val heroDataSource = ":hero:hero-datasource"
+    const val heroDomain = ":hero:hero-domain"
+    const val heroInteractors = ":hero:hero-interactors"
+    const val ui_heroDetail = ":ui-heroDetail"
+    const val ui_heroList = ":ui-heroList"
 }

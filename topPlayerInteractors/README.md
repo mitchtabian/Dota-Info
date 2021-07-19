@@ -1,2 +1,0 @@
-# Module Description
-Use-cases for [topPlayersUI](https://github.com/mitchtabian/Dota-Info/tree/dev-1/topPlayersUI) and [topPlayerDetailUI](https://github.com/mitchtabian/Dota-Info/tree/dev-1/topPlayerDetailUI).

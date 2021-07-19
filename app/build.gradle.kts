@@ -48,30 +48,8 @@ dependencies{
     implementation(project(Modules.core))
 
     implementation(project(Modules.hero))
-
-    implementation(project(Modules.herosUI))
-
-    implementation(project(Modules.heroDetailUI))
-
-    implementation(project(Modules.heroService))
-
-    implementation(project(Modules.heroCache))
-
-    implementation(project(Modules.heroInteractors))
-
-    implementation(project(Modules.navigation))
-
-    implementation(project(Modules.player))
-
-    implementation(project(Modules.topPlayersUI))
-
-    implementation(project(Modules.topPlayerDetailUI))
-
-    implementation(project(Modules.topPlayerService))
-
-    implementation(project(Modules.topPlayerCache))
-
-    implementation(project(Modules.topPlayerInteractors))
+    implementation(project(Modules.ui_heroDetail))
+    implementation(project(Modules.ui_heroList))
 
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.appCompat)

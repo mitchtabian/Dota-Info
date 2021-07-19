@@ -1,2 +1,0 @@
-# Module Description
-Presentation for displaying detailed information about a particular [Hero](https://github.com/mitchtabian/Dota-Info/blob/dev-1/hero/src/main/java/com/codingwithmitch/hero/Hero.kt).

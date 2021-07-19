@@ -14,30 +14,8 @@ include ':constants'
 include ":core"
 
 include ':hero'
-
-include ':heroCache'
-
-include ':heroDetailUI'
-
-include ':heroInteractors'
-
-include ':heroService'
-
-include ':herosUI'
-
-include ':navigation'
-
-include ':player'
-
-include ':topPlayerCache'
-
-include ':topPlayerDetailUI'
-
-include ':topPlayerInteractors'
-
-include ':topPlayersUI'
-
-include ':topPlayerService'
-
-
-
+include ':hero:hero-datasource'
+include ':hero:hero-domain'
+include ':hero:hero-interactors'
+include ':ui-heroDetail'
+include ':ui-heroList'
