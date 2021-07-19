@@ -1,6 +1,6 @@
-package com.codingwithmitch.dotainfo.presentation
+package com.codingwithmitch.dotainfo.presentation.topplayersui
 
-import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.junit4.createComposeRule
 import com.codingwithmitch.player.Player
 import com.codingwithmitch.player.Profile
 import com.codingwithmitch.topplayersui.presentation.TopPlayers
@@ -10,14 +10,17 @@ import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Rule
 import org.junit.Test
 
+/**
+ * This is just a dummy test
+ */
 @HiltAndroidTest
-class ComposeEndToEndTest {
-
-    @get:Rule(order = 0)
-    var hiltRule = HiltAndroidRule(this)
+class TopPlayersIsolationTest {
 
     @get:Rule(order = 1)
-    val composeTestRule = createAndroidComposeRule<MainActivity>()
+    var hiltRule = HiltAndroidRule(this)
+
+    @get:Rule(order = 2)
+    val composeTestRule = createComposeRule()
 
     @Test
     fun MyTest() {

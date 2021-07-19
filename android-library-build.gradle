@@ -12,7 +12,6 @@ android {
         versionCode Android.versionCode
         versionName Android.versionName
 
-        testInstrumentationRunner = "com.codingwithmitch.dotainfo.CustomTestRunner"
     }
 
     buildTypes {
