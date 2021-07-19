@@ -14,7 +14,7 @@ import com.codingwithmitch.topplayersdetailui.navigation.TopPlayerDetailDestinat
 fun TopPlayers(
     state: TopPlayersState,
     events: (TopPlayersEvents) -> Unit,
-    navController: NavController,
+    navigateToDetailScreen: (Int) -> Unit,
 ){
     LazyColumn(
         modifier = Modifier.fillMaxSize()
@@ -22,7 +22,7 @@ fun TopPlayers(
         items(state.players){ player ->
             Text(
                 modifier = Modifier.clickable {
-                    navController.navigate("$TopPlayerDetailDestination/${player.profile.accountId}")
+                    navigateToDetailScreen(player.profile.accountId)
                 },
                 text = player.profile.personaName ?: "Unknown name"
             )

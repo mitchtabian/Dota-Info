@@ -2,7 +2,6 @@ apply {
     from("$rootDir/library-build.gradle")
 }
 
-
 dependencies {
     "implementation"(project(Modules.constants))
     "implementation"(project(Modules.core))
@@ -10,4 +9,8 @@ dependencies {
     "implementation"(project(Modules.topPlayerService))
 
     "implementation"(Kotlinx.coroutinesCore)
+
+    "testImplementation"(Junit.junit4)
+    "testImplementation"(Ktor.ktorClientMock)
 }
+

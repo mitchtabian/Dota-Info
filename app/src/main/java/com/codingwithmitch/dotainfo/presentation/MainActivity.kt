@@ -14,6 +14,7 @@ import com.codingwithmitch.dotainfo.presentation.navigation.DotaInfoBottomNaviga
 import com.codingwithmitch.dotainfo.presentation.theme.DotaInfoTheme
 import com.codingwithmitch.herosui.Heros
 import com.codingwithmitch.herosui.navigation.HerosDestination
+import com.codingwithmitch.topplayersdetailui.navigation.TopPlayerDetailDestination
 import com.codingwithmitch.topplayersui.presentation.TopPlayers
 import com.codingwithmitch.topplayersui.presentation.TopPlayersViewModel
 import com.codingwithmitch.topplayersui.navigation.TopPlayersDestination
@@ -53,7 +54,9 @@ private fun NavGraphBuilder.addTopPlayers(
         TopPlayers(
             state = viewModel.state.value,
             events = viewModel::onTriggerEvent,
-            navController = navController
+            navigateToDetailScreen = { accountId ->
+                navController.navigate("$TopPlayerDetailDestination/$accountId")
+            }
         )
     }
 }

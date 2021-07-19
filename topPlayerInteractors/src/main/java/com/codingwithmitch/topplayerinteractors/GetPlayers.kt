@@ -1,6 +1,5 @@
 package com.codingwithmitch.topplayerinteractors
 
-import com.codingwithmitch.constants.NetworkConstants.NETWORK_TIMEOUT
 import com.codingwithmitch.core.domain.DataState
 import com.codingwithmitch.core.domain.ProgressBarState
 import com.codingwithmitch.core.domain.UIComponent
@@ -9,10 +8,14 @@ import com.codingwithmitch.topplayerservice.TopPlayerService
 import com.codingwithmitch.topplayerservice.model.toPlayer
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.withTimeout
 
+/**
+ * @param service: service gets network data.
+ * @param requestLimit: Free tier API only allows 60 requestLimit requests / minute so need to limit.
+ */
 class GetPlayers(
     private val service: TopPlayerService,
+    private val requestLimit: Int = 30,
 ) {
 
     fun execute(): Flow<DataState<List<Player>>> =  flow {
@@ -25,12 +28,20 @@ class GetPlayers(
             // use the id's to search each individual player
             val players: MutableList<Player> = mutableListOf()
 
-            // Free tier API only allows 60 requests / minute so need to limit
-            val maxIndex = if(playersByRank.size > 30) 30 else playersByRank.size
+            val maxIndex = if(playersByRank.size > requestLimit) requestLimit else playersByRank.size - 1
             for(index in 0 .. maxIndex){
-                val player = service.getPlayerDto(playersByRank.get(index).accountId).toPlayer()
-                if(player != null){
-                    players.add(player)
+                try {
+                    val player = service.getPlayerDto(playersByRank.get(index).accountId).toPlayer()
+                    if(player != null){
+                        players.add(player)
+                    }
+                }catch (e: Exception){
+                    e.printStackTrace()
+                    emit(DataState.Response<List<Player>>(
+                        uiComponent = UIComponent.None(
+                            message = e.message ?: "Error retrieving player details."
+                        )
+                    ))
                 }
             }
             emit(DataState.Data<List<Player>>(data = players))
@@ -45,6 +56,14 @@ class GetPlayers(
         }finally {
             // Finish loading state
             emit(DataState.Loading(ProgressBarState.Idle))
+        }
+    }
+
+    companion object Factory{
+        fun build(): GetPlayers{
+            return GetPlayers(
+                service = TopPlayerService.build()
+            )
         }
     }
 }

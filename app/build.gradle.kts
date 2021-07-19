@@ -15,7 +15,7 @@ android {
         targetSdk = Android.targetSdk
         versionCode = Android.versionCode
         versionName = Android.versionName
-
+        testInstrumentationRunner = "com.codingwithmitch.dotainfo.CustomTestRunner"
     }
 
     buildTypes {
@@ -36,6 +36,10 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion = Compose.composeVersion
+    }
+    packagingOptions {
+        exclude("META-INF/AL2.0")
+        exclude("META-INF/LGPL2.1")
     }
 }
 
@@ -87,6 +91,16 @@ dependencies{
     kapt(Hilt.compiler)
 
     implementation(Ktor.core)
+
+    androidTestImplementation(Junit.junit4)
+    androidTestImplementation(AndroidXTest.runner)
+    androidTestImplementation(AndroidXTest.espressoCore)
+    androidTestImplementation(AndroidXTest.rules)
+    androidTestImplementation(AndroidXTest.junitExt)
+    androidTestImplementation(ComposeTest.uiTestJunit4)
+    androidTestImplementation(HiltTest.hiltAndroidTesting)
+    kaptAndroidTest(Hilt.compiler)
+    debugImplementation(ComposeTest.uiTestManifest)
 }
 
 

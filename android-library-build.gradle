@@ -12,7 +12,7 @@ android {
         versionCode Android.versionCode
         versionName Android.versionName
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.codingwithmitch.dotainfo.CustomTestRunner"
     }
 
     buildTypes {
@@ -36,6 +36,13 @@ android {
         kotlinCompilerExtensionVersion Compose.composeVersion
         kotlinCompilerVersion Kotlin.version
     }
+    sourceSets.getByName("androidTest") {
+        java.srcDir(project(":app").file("src/androidTest/java/com.codingwithmitch.dotainfo.CustomTestRunner.kt"))
+    }
+    packagingOptions {
+        exclude("META-INF/AL2.0")
+        exclude("META-INF/LGPL2.1")
+    }
 }
 
 dependencies{
@@ -55,4 +62,14 @@ dependencies{
 
     implementation Hilt.android
     kapt Hilt.compiler
+
+    androidTestImplementation AndroidXTest.runner
+    androidTestImplementation AndroidXTest.espressoCore
+    androidTestImplementation AndroidXTest.rules
+    androidTestImplementation AndroidXTest.junitExt
+    androidTestImplementation Junit.junit4
+    androidTestImplementation ComposeTest.uiTestJunit4
+    debugImplementation ComposeTest.uiTestManifest
+    kaptAndroidTest Hilt.compiler
+    debugImplementation HiltTest.hiltAndroidTesting
 }

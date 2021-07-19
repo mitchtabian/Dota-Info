@@ -7,8 +7,10 @@ plugins {
 }
 
 dependencies {
+    "implementation"(project(Modules.core))
     "implementation"(project(Modules.player))
 
     "implementation"(Ktor.core)
     "implementation"(Ktor.clientSerialization)
+    "implementation"(Ktor.android)
 }

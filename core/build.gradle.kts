@@ -4,7 +4,4 @@ apply {
 
 
 dependencies {
-    "implementation"(Ktor.core)
-    "implementation"(Ktor.clientSerialization)
-    "implementation"(Ktor.android)
 }
