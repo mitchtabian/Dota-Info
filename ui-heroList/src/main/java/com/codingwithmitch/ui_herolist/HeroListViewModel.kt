@@ -21,6 +21,10 @@ constructor(
     private val TAG: String = "AppDebug"
 
     init {
+        getHeros()
+    }
+
+    private fun getHeros(){
         getHeros.execute().onEach { dataState ->
 
             when(dataState){
