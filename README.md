@@ -4,12 +4,18 @@ Multi-module demo app that gets data from dota2 api.
 # App Design (Likely to change)
 
 ### Module 1 (app)
+Type: android application.
+
 MainActivity, BaseApplication, Theme.
 
 ### Module 2 (core)
+Type: java/kotlin library.
+
 Core business models and classes.
 
 ### Module 3 (hero)
+Type: java/kotlin libraries.
+
 Contains 3 sub-modules:
 1. hero-datasource
     - Contains the datasources (network and cache) for the hero Module.
@@ -19,9 +25,13 @@ Contains 3 sub-modules:
     - Use-cases for the hero Module.
 
 ### Module 4 (ui-heroList)
+Type: android-library.
+
 UI components for the HeroList screen.
 
 ### Module 5 (ui-heroDetail)
+Type: android-library.
+
 UI components for the HeroDetail screen.
 
 
