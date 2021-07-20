@@ -1,5 +1,5 @@
 apply {
-    from("$rootDir/android-ui-build.gradle")
+    from("$rootDir/android-library-build.gradle")
 }
 
 

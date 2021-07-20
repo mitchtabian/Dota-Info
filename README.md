@@ -37,10 +37,9 @@ UI components for the HeroDetail screen.
 
 # build.gradle files
 There are 3 types of build.gradle files.
-1. android-ui-build.gradle
-    - Android module that contains ui components.
+1. android application (app module)
 1. android-library-build.gradle
-    - Android module that does not contain any ui components. (ex: SQL Delight driver must be in an android module)
+    - Android module that contains ui components.
 1. library-build.gradle
     - Pure java/kotlin library.
 
