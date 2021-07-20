@@ -3,7 +3,6 @@ package com.codingwithmitch.dotainfo.hero_domain
 data class Hero(
     val id: Int,
     val localizedName: String,
-    val primaryAttr: String,
     val primaryAttribute: HeroAttribute,
     val attackType: HeroAttackType,
     val roles: List<HeroRole>,

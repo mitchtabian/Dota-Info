@@ -1,44 +1,83 @@
 package com.codingwithmitch.dotainfo.hero_domain
 
-sealed class HeroRole{
+sealed class HeroRole(
+    val uiValue: String,
+){
 
-    data class Carry(
-        val value: String = "Carry"
-    ): HeroRole()
+    object Carry: HeroRole(
+        uiValue = "Carry"
+    )
 
-    data class Escape(
-        val value: String = "Escape"
-    ): HeroRole()
+    object Escape: HeroRole(
+        uiValue = "Escape"
+    )
 
-    data class Nuker(
-        val value: String = "Nuker"
-    ): HeroRole()
+    object Nuker: HeroRole(
+        uiValue = "Nuker"
+    )
 
-    data class Initiator(
-        val value: String = "Initiator"
-    ): HeroRole()
+    object Initiator: HeroRole(
+        uiValue = "Initiator"
+    )
 
-    data class Durable(
-        val value: String = "Durable"
-    ): HeroRole()
+    object Durable: HeroRole(
+        uiValue = "Durable"
+    )
 
-    data class Disabler(
-        val value: String = "Disabler"
-    ): HeroRole()
+    object Disabler: HeroRole(
+        uiValue = "Disabler"
+    )
 
-    data class Jungler(
-        val value: String = "Jungler"
-    ): HeroRole()
+    object Jungler: HeroRole(
+        uiValue = "Jungler"
+    )
 
-    data class Support(
-        val value: String = "Support"
-    ): HeroRole()
+    object Support: HeroRole(
+        uiValue = "Support"
+    )
 
-    data class Pusher(
-        val value: String = "Pusher"
-    ): HeroRole()
+    object Pusher: HeroRole(
+        uiValue = "Pusher"
+    )
 
+    object Unknown: HeroRole(
+        uiValue = "Unknown"
+    )
+}
 
+fun getHeroRole(uiValue: String): HeroRole{
+    return when(uiValue){
+        HeroRole.Carry.uiValue -> {
+            HeroRole.Carry
+        }
+        HeroRole.Escape.uiValue -> {
+            HeroRole.Escape
+        }
+        HeroRole.Nuker.uiValue -> {
+            HeroRole.Nuker
+        }
+        HeroRole.Initiator.uiValue -> {
+            HeroRole.Initiator
+        }
+        HeroRole.Durable.uiValue -> {
+            HeroRole.Durable
+        }
+        HeroRole.Disabler.uiValue -> {
+            HeroRole.Disabler
+        }
+        HeroRole.Jungler.uiValue -> {
+            HeroRole.Jungler
+        }
+        HeroRole.Support.uiValue -> {
+            HeroRole.Support
+        }
+        HeroRole.Pusher.uiValue -> {
+            HeroRole.Pusher
+        }
+        else -> {
+            HeroRole.Unknown
+        }
+    }
 }
 
 

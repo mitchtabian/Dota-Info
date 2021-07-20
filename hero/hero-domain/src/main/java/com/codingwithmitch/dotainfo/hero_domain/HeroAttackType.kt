@@ -1,12 +1,32 @@
 package com.codingwithmitch.dotainfo.hero_domain
 
-sealed class HeroAttackType{
+sealed class HeroAttackType(
+    val uiValue: String,
+){
 
-    data class Melee(
-        val value: String = "Melee"
-    ): HeroAttackType()
+    object Melee: HeroAttackType(
+        uiValue = "Melee",
+    )
 
-    data class Ranged(
-        val value: String = "Ranged"
-    ): HeroAttackType()
+    object Ranged: HeroAttackType(
+        uiValue = "Ranged",
+    )
+
+    object Unknown: HeroAttackType(
+        uiValue = "Unknown",
+    )
+}
+
+fun getHeroAttackType(uiValue: String): HeroAttackType{
+    return when(uiValue){
+        HeroAttackType.Melee.uiValue -> {
+            HeroAttackType.Melee
+        }
+        HeroAttackType.Ranged.uiValue -> {
+            HeroAttackType.Ranged
+        }
+        else -> {
+            HeroAttackType.Unknown
+        }
+    }
 }
