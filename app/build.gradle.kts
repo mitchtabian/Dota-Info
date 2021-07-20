@@ -46,6 +46,7 @@ android {
 dependencies{
 
     implementation(project(Modules.core))
+    implementation(project(Modules.heroInteractors))
 
     implementation(project(Modules.ui_heroDetail))
     implementation(project(Modules.ui_heroList))
@@ -68,6 +69,8 @@ dependencies{
     kapt(Hilt.compiler)
 
     implementation(Ktor.core)
+
+    implementation(SqlDelight.androidDriver)
 
     androidTestImplementation(Junit.junit4)
     androidTestImplementation(AndroidXTest.runner)

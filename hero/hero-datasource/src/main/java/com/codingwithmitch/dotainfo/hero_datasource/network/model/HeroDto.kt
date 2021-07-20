@@ -29,22 +29,22 @@ data class HeroDto(
     val icon: String,
 
     @SerialName("base_health")
-    val baseHealth: Long,
+    val baseHealth: Float,
 
     @SerialName("base_health_regen")
-    val baseHealthRegen: Long?,
+    val baseHealthRegen: Float?,
 
     @SerialName("base_mana")
-    val baseMana: Long,
+    val baseMana: Float,
 
     @SerialName("base_mana_regen")
-    val baseManaRegen: Long?,
+    val baseManaRegen: Float?,
 
     @SerialName("base_armor")
-    val baseArmor: Long,
+    val baseArmor: Float,
 
     @SerialName("base_mr")
-    val baseMoveRate: Long,
+    val baseMoveRate: Float,
 
     @SerialName("base_attack_min")
     val baseAttackMin: Int,
@@ -62,13 +62,13 @@ data class HeroDto(
     val baseInt: Int,
 
     @SerialName("str_gain")
-    val strGain: Long, // Strength gain per lvl
+    val strGain: Float, // Strength gain per lvl
 
     @SerialName("agi_gain")
-    val agiGain: Long, // Agility gain per lvl
+    val agiGain: Float, // Agility gain per lvl
 
     @SerialName("int_gain")
-    val intGain: Long, // Intelligence gain per lvl
+    val intGain: Float, // Intelligence gain per lvl
 
     @SerialName("attack_range")
     val attackRange: Int,
@@ -77,13 +77,13 @@ data class HeroDto(
     val projectileSpeed: Int,
 
     @SerialName("attack_rate")
-    val attackRate: Long,
+    val attackRate: Float,
 
     @SerialName("move_speed")
     val moveSpeed: Int,
 
     @SerialName("turn_rate")
-    val turnRate: Long? = 0L,
+    val turnRate: Float? = 0F,
 
     @SerialName("legs")
     val legs: Int, // How many legs does this hero have?
@@ -95,10 +95,10 @@ data class HeroDto(
     val turboWins: Int, // How many times won a turbo match?
 
     @SerialName("pro_win")
-    val proWins: Int, // How many times won a pro match?
+    val proWins: Int? = 0, // How many times won a pro match?
 
     @SerialName("pro_pick")
-    val proPick: Int, // How many times picked in pro match?
+    val proPick: Int? = 0, // How many times picked in pro match?
 
     @SerialName("1_pick")
     val firstPick: Int, // How many times picked first?
@@ -180,8 +180,8 @@ fun HeroDto.toHero(): Hero{
         legs = legs,
         turboPicks = turboPicks,
         turboWins = turboWins,
-        proWins = proWins,
-        proPick = proPick,
+        proWins = proWins ?: 0,
+        proPick = proPick?: 0,
         firstPick = firstPick,
         firstWin = firstWin,
         secondPick = secondPick,

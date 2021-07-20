@@ -8,30 +8,30 @@ data class Hero(
     val roles: List<HeroRole>,
     val img: String,
     val icon: String,
-    val baseHealth: Long,
-    val baseHealthRegen: Long?,
-    val baseMana: Long,
-    val baseManaRegen: Long?,
-    val baseArmor: Long,
-    val baseMoveRate: Long,
+    val baseHealth: Float,
+    val baseHealthRegen: Float?,
+    val baseMana: Float,
+    val baseManaRegen: Float?,
+    val baseArmor: Float,
+    val baseMoveRate: Float,
     val baseAttackMin: Int,
     val baseAttackMax: Int,
     val baseStr: Int,
     val baseAgi: Int,
     val baseInt: Int,
-    val strGain: Long, // Strength gain per lvl
-    val agiGain: Long, // Agility gain per lvl
-    val intGain: Long, // Intelligence gain per lvl
+    val strGain: Float, // Strength gain per lvl
+    val agiGain: Float, // Agility gain per lvl
+    val intGain: Float, // Intelligence gain per lvl
     val attackRange: Int,
     val projectileSpeed: Int,
-    val attackRate: Long,
+    val attackRate: Float,
     val moveSpeed: Int,
-    val turnRate: Long? = 0L,
+    val turnRate: Float? = 0F,
     val legs: Int, // How many legs does this hero have?
     val turboPicks: Int, // How many times picked for turbo matches?
     val turboWins: Int, // How many times won a turbo match?
-    val proWins: Int, // How many times won a pro match?
-    val proPick: Int, // How many times picked in pro match?
+    val proWins: Int = 0, // How many times won a pro match?
+    val proPick: Int = 0, // How many times picked in pro match?
     val firstPick: Int, // How many times picked first?
     val firstWin: Int, // How many times picked first and won?
     val secondPick: Int, // How many times picked second?
