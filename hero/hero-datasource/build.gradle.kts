@@ -19,3 +19,10 @@ dependencies {
     "implementation"(SqlDelight.runtime)
     "implementation"(SqlDelight.androidDriver)
 }
+
+sqldelight {
+    database("HeroDatabase") {
+        packageName = "com.codingwithmitch.dotainfo.hero_datasource.cache"
+        sourceFolders = listOf("sqldelight")
+    }
+}

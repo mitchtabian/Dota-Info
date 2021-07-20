@@ -47,7 +47,6 @@ dependencies{
 
     implementation(project(Modules.core))
 
-    implementation(project(Modules.hero))
     implementation(project(Modules.ui_heroDetail))
     implementation(project(Modules.ui_heroList))
 
