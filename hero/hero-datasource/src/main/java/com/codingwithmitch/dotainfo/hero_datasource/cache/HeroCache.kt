@@ -1,8 +1,7 @@
 package com.codingwithmitch.dotainfo.hero_datasource.cache
 
-import android.content.Context
 import com.codingwithmitch.dotainfo.hero_domain.Hero
-import com.squareup.sqldelight.android.AndroidSqliteDriver
+import com.squareup.sqldelight.db.SqlDriver
 
 interface HeroCache {
 
@@ -34,18 +33,18 @@ interface HeroCache {
     ): List<Hero>
 
     companion object Factory {
-        fun build(context: Context): HeroCache {
-            return HeroCacheImpl(
-                HeroDatabase(
-                    AndroidSqliteDriver(
-                        HeroDatabase.Schema,
-                        context,
-                        "heros.db"
-                    )
-                )
-            )
+        fun build(sqlDriver: SqlDriver): HeroCache {
+            return HeroCacheImpl(HeroDatabase(sqlDriver))
+        }
+        fun schema(): SqlDriver.Schema {
+            return HeroDatabase.Schema
+        }
+
+        fun dbName(): String {
+            return "heros.db"
         }
     }
+
 }
 
 

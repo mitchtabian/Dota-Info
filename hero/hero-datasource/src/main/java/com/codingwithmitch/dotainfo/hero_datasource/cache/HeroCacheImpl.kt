@@ -5,6 +5,7 @@ import com.codingwithmitch.dotainfo.hero_domain.Hero
 import com.codingwithmitch.dotainfo.hero_domain.HeroRole
 import com.codingwithmitch.dotainfo.herodatasource.cache.HeroDbQueries
 
+
 class HeroCacheImpl(
     private val heroDatabase: HeroDatabase,
 ): HeroCache {

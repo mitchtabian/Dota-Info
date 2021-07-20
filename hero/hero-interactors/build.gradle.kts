@@ -4,4 +4,6 @@ apply {
 
 
 dependencies {
+    "implementation"(project(Modules.heroDataSource))
+    "implementation"(project(Modules.heroDomain))
 }

@@ -1,5 +1,5 @@
 apply {
-    from("$rootDir/android-library-build.gradle")
+    from("$rootDir/library-build.gradle")
 }
 
 
@@ -17,7 +17,6 @@ dependencies {
     "implementation"(Ktor.android)
 
     "implementation"(SqlDelight.runtime)
-    "implementation"(SqlDelight.androidDriver)
 }
 
 sqldelight {
