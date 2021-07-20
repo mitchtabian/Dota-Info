@@ -1,0 +1,11 @@
+CREATE TABLE  hero_Entity(
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    publisher TEXT NOT NULL,
+    featured_image TEXT NOT NULL,
+    rating INTEGER NOT NULL,
+    source_url TEXT NOT NULL,
+    ingredients TEXT NOT NULL,
+    date_added REAL NOT NULL,
+    date_updated REAL NOT NULL
+);

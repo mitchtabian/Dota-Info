@@ -1,10 +1,11 @@
 apply {
-    from("$rootDir/library-build.gradle")
+    from("$rootDir/android-library-build.gradle")
 }
 
 
 plugins {
     kotlin(KotlinPlugins.serialization) version Kotlin.version
+    id(SqlDelight.plugin)
 }
 
 dependencies {
@@ -14,4 +15,7 @@ dependencies {
     "implementation"(Ktor.core)
     "implementation"(Ktor.clientSerialization)
     "implementation"(Ktor.android)
+
+    "implementation"(SqlDelight.runtime)
+    "implementation"(SqlDelight.androidDriver)
 }
