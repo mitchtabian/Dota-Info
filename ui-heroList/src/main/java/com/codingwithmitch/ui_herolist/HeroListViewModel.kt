@@ -5,7 +5,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.codingwithmitch.core.domain.DataState
+import com.codingwithmitch.core.domain.Queue
 import com.codingwithmitch.core.domain.UIComponent
+import com.codingwithmitch.core.util.Logger
 import com.codingwithmitch.dotainfo.hero_interactors.GetHeros
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
@@ -17,9 +19,8 @@ class HeroListViewModel
 @Inject
 constructor(
     private val getHeros: GetHeros,
+    private val logger: Logger,
 ): ViewModel(){
-
-    private val TAG: String = "AppDebug"
 
     val state: MutableState<HeroListState> = mutableStateOf(HeroListState())
 
@@ -33,7 +34,12 @@ constructor(
                 getHeros()
             }
             is HeroListEvents.Error -> {
-//                appendToMessageQueue(dataState.uiComponent)
+                if(event.uiComponent is UIComponent.None){
+                    logger.log("getHeros: ${(event.uiComponent as UIComponent.None).message}")
+                }
+                else{
+                    appendToMessageQueue(event.uiComponent)
+                }
             }
         }
     }
@@ -48,20 +54,22 @@ constructor(
                     state.value = state.value.copy(heros = dataState.data?: listOf())
                 }
                 is DataState.Response -> {
-                    when(dataState.uiComponent){
-                        is UIComponent.Dialog -> {
-                        }
-                        is UIComponent.SnackBar -> {
-                        }
-                        is UIComponent.Toast -> {
-                        }
-                        is UIComponent.None -> {
-                        }
+                    if(dataState.uiComponent is UIComponent.None){
+                        logger.log("getHeros: ${(dataState.uiComponent as UIComponent.None).message}")
                     }
-//                    appendToMessageQueue(dataState.uiComponent)
+                    else{
+                        appendToMessageQueue(dataState.uiComponent)
+                    }
                 }
             }
         }.launchIn(viewModelScope)
+    }
+
+    private fun appendToMessageQueue(uiComponent: UIComponent){
+        val queue = state.value.queue
+        queue.add(uiComponent)
+        state.value = state.value.copy(queue = Queue(mutableListOf())) // force recompose
+        state.value = state.value.copy(queue = queue)
     }
 }
 

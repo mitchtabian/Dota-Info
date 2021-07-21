@@ -23,3 +23,14 @@ object HeroDetailModule {
         return interactors.getHeroFromCache
     }
 }
+
+
+
+
+
+
+
+
+
+
+

@@ -11,6 +11,8 @@ include ":app"
 
 include ':constants'
 
+include ':components'
+
 include ":core"
 
 include ':hero'
@@ -19,3 +21,4 @@ include ':hero:hero-domain'
 include ':hero:hero-interactors'
 include ':ui-heroDetail'
 include ':ui-heroList'
+

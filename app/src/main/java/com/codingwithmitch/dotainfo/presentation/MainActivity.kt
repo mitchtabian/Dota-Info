@@ -3,7 +3,6 @@ package com.codingwithmitch.dotainfo.presentation
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.Scaffold
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
@@ -25,16 +24,14 @@ class MainActivity : ComponentActivity() {
         setContent {
             DotaInfoTheme {
                 val navController = rememberNavController()
-                Scaffold {
-                    NavHost(
-                        navController = navController,
-                        startDestination = Screen.HeroList.route,
-                        builder = {
-                            addHeroList(navController = navController)
-                            addHeroDetail()
-                        }
-                    )
-                }
+                NavHost(
+                    navController = navController,
+                    startDestination = Screen.HeroList.route,
+                    builder = {
+                        addHeroList(navController = navController)
+                        addHeroDetail()
+                    }
+                )
             }
         }
     }
