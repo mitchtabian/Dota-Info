@@ -6,6 +6,8 @@ sealed class HeroListEvents{
 
     object GetHeros: HeroListEvents()
 
+    object OnRemoveHeadFromQueue: HeroListEvents()
+
     data class Error(
         val uiComponent: UIComponent
     ): HeroListEvents()

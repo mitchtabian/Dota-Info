@@ -33,6 +33,9 @@ constructor(
             is HeroListEvents.GetHeros -> {
                 getHeros()
             }
+            is HeroListEvents.OnRemoveHeadFromQueue -> {
+                removeHeadMessage()
+            }
             is HeroListEvents.Error -> {
                 if(event.uiComponent is UIComponent.None){
                     logger.log("getHeros: ${(event.uiComponent as UIComponent.None).message}")
@@ -70,6 +73,16 @@ constructor(
         queue.add(uiComponent)
         state.value = state.value.copy(queue = Queue(mutableListOf())) // force recompose
         state.value = state.value.copy(queue = queue)
+    }
+
+    private fun removeHeadMessage() {
+        try {
+            val queue = state.value.queue
+            queue.remove() // can throw exception if empty
+            state.value = state.value.copy(queue = queue)
+        }catch (e: Exception){
+            logger.log("Nothing to remove from DialogQueue")
+        }
     }
 }
 

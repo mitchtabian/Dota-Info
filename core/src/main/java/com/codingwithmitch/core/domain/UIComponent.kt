@@ -28,7 +28,7 @@ sealed class SnackbarDuration(val value: Long){
     object SHORT: SnackbarDuration(4000L)
 }
 
-sealed class ToastDuration(val value: Long){
+sealed class ToastDuration(val value: Int){
 
     object SHORT: ToastDuration(0)
 
