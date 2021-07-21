@@ -1,5 +1,6 @@
 package com.codingwithmitch.ui_herolist
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -8,6 +9,7 @@ import androidx.compose.ui.Modifier
 import com.codingwithmitch.components.DefaultScreenUI
 import com.codingwithmitch.ui_herolist.components.HeroListItem
 
+@ExperimentalAnimationApi
 @Composable
 fun HeroList(
     state: HeroListState,

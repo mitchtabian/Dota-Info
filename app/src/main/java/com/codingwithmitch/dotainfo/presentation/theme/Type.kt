@@ -20,37 +20,37 @@ val QuickSandTypography = Typography(
     h1 = TextStyle(
         fontFamily = QuickSand,
         fontWeight = FontWeight.W500,
-        fontSize = 30.sp,
+        fontSize = 32.sp,
     ),
     h2 = TextStyle(
         fontFamily = QuickSand,
         fontWeight = FontWeight.W500,
-        fontSize = 24.sp,
+        fontSize = 26.sp,
     ),
     h3 = TextStyle(
         fontFamily = QuickSand,
         fontWeight = FontWeight.W500,
-        fontSize = 20.sp,
+        fontSize = 22.sp,
     ),
     h4 = TextStyle(
         fontFamily = QuickSand,
         fontWeight = FontWeight.W400,
-        fontSize = 18.sp,
+        fontSize = 20.sp,
     ),
     h5 = TextStyle(
         fontFamily = QuickSand,
         fontWeight = FontWeight.W400,
-        fontSize = 16.sp,
+        fontSize = 18.sp,
     ),
     h6 = TextStyle(
         fontFamily = QuickSand,
         fontWeight = FontWeight.W400,
-        fontSize = 14.sp,
+        fontSize = 16.sp,
     ),
     subtitle1 = TextStyle(
         fontFamily = QuickSand,
         fontWeight = FontWeight.W500,
-        fontSize = 16.sp,
+        fontSize = 15.sp,
     ),
     subtitle2 = TextStyle(
         fontFamily = QuickSand,
@@ -69,17 +69,17 @@ val QuickSandTypography = Typography(
     button = TextStyle(
         fontFamily = QuickSand,
         fontWeight = FontWeight.W400,
-        fontSize = 15.sp,
+        fontSize = 16.sp,
         color = Color.White
     ),
     caption = TextStyle(
         fontFamily = QuickSand,
         fontWeight = FontWeight.Normal,
-        fontSize = 12.sp
+        fontSize = 13.sp
     ),
     overline = TextStyle(
         fontFamily = QuickSand,
         fontWeight = FontWeight.W400,
-        fontSize = 12.sp
+        fontSize = 13.sp
     )
 )

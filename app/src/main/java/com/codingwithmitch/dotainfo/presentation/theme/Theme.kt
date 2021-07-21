@@ -2,11 +2,12 @@ package com.codingwithmitch.dotainfo.presentation.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
-private val DarkColorPalette = lightColors(
+private val DarkColorPalette = darkColors(
     primary = Blue300,
     primaryVariant = Blue700,
     onPrimary = Color.White,
@@ -17,14 +18,14 @@ private val DarkColorPalette = lightColors(
     onError = RedErrorDark,
     background = Color.Black,
     onBackground = Color.White,
-    surface = Black2,
+    surface = Black1,
     onSurface = Color.White,
 )
 
 private val LightColorPalette = lightColors(
     primary = Blue600,
     primaryVariant = Blue400,
-    onPrimary = Black2,
+    onPrimary = Black1,
     secondary = Color.White,
     secondaryVariant = Teal300,
     onSecondary = Color.Black,
@@ -33,7 +34,7 @@ private val LightColorPalette = lightColors(
     background = Grey1,
     onBackground = Color.Black,
     surface = Color.White,
-    onSurface = Black2,
+    onSurface = Black1,
 )
 
 @Composable

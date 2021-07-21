@@ -3,6 +3,7 @@ package com.codingwithmitch.dotainfo.presentation
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
@@ -17,6 +18,7 @@ import com.codingwithmitch.ui_herolist.HeroList
 import com.codingwithmitch.ui_herolist.HeroListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+@ExperimentalAnimationApi
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +39,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@ExperimentalAnimationApi
 private fun NavGraphBuilder.addHeroList(navController: NavController) {
     composable(
         route = Screen.HeroList.route,
@@ -52,6 +55,7 @@ private fun NavGraphBuilder.addHeroList(navController: NavController) {
     }
 }
 
+@ExperimentalAnimationApi
 private fun NavGraphBuilder.addHeroDetail() {
     composable(
         route = Screen.HeroDetail.route + "/{heroId}",

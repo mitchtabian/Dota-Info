@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="strength">Strength</string>
+    <string name="agility">Agility</string>
+    <string name="intelligence">Intelligence</string>
+    <string name="attack_range">Attack Range</string>
+    <string name="projectile_speed">Projectile Speed</string>
+    <string name="health">Health</string>
+    <string name="move_speed">Move Speed</string>
+    <string name="attack_dmg">Attack dmg</string>
+</resources>
