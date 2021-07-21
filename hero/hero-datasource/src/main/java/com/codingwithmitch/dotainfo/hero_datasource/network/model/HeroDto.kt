@@ -1,5 +1,6 @@
 package com.codingwithmitch.dotainfo.hero_datasource.network.model
 
+import com.codingwithmitch.dotainfo.hero_datasource.network.EndPoints.BASE_URL
 import com.codingwithmitch.dotainfo.hero_domain.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -156,8 +157,8 @@ fun HeroDto.toHero(): Hero{
         primaryAttribute = getHeroAttrFromAbreviation(primaryAttribute),
         attackType = getHeroAttackType(attackType),
         roles = roles.map { getHeroRole(it) },
-        img = img,
-        icon = icon,
+        img = "$BASE_URL$img",
+        icon = "$BASE_URL$icon",
         baseHealth = baseHealth,
         baseHealthRegen = baseHealthRegen,
         baseMana = baseMana,

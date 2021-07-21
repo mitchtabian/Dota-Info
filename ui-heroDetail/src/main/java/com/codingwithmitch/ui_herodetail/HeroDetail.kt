@@ -13,10 +13,11 @@ fun HeroDetail(
     events: (HeroDetailEvents) -> Unit,
 ){
     DefaultScreenUI(
-        queue = state.queue,
+        queue = state.errorQueue,
         onRemoveHeadFromQueue = {
-            TODO("")
-        }
+            events(HeroDetailEvents.OnRemoveHeadFromQueue)
+        },
+        progressBarState = state.progressBarState,
     ) {
         Column(
             modifier = Modifier.fillMaxSize()

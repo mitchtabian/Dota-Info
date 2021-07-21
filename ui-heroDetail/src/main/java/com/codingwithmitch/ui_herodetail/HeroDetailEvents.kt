@@ -8,6 +8,8 @@ sealed class HeroDetailEvents{
         val id: Int,
     ): HeroDetailEvents()
 
+    object OnRemoveHeadFromQueue: HeroDetailEvents()
+
     data class Error(
         val uiComponent: UIComponent
     ): HeroDetailEvents()
