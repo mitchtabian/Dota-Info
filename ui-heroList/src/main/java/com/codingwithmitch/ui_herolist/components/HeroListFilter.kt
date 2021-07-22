@@ -16,9 +16,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.codingwithmitch.core.domain.SqlFilterOrder
+import com.codingwithmitch.core.domain.FilterOrder
 import com.codingwithmitch.dotainfo.hero_domain.HeroAttribute
-import com.codingwithmitch.ui_herolist.util.HeroFilter
+import com.codingwithmitch.dotainfo.hero_domain.HeroFilter
 
 @ExperimentalAnimationApi
 @Composable
@@ -56,14 +56,14 @@ fun HeroListFilter(
                     orderDesc = {
                         onUpdateHeroFilter(
                             HeroFilter.Hero(
-                                order = SqlFilterOrder.Descending
+                                order = FilterOrder.Descending
                             )
                         )
                     },
                     orderAsc = {
                         onUpdateHeroFilter(
                             HeroFilter.Hero(
-                                order = SqlFilterOrder.Ascending
+                                order = FilterOrder.Ascending
                             )
                         )
                     }
@@ -82,14 +82,14 @@ fun HeroListFilter(
                     orderDesc = {
                         onUpdateHeroFilter(
                             HeroFilter.ProWins(
-                                order = SqlFilterOrder.Descending
+                                order = FilterOrder.Descending
                             )
                         )
                     },
                     orderAsc = {
                         onUpdateHeroFilter(
                             HeroFilter.ProWins(
-                                order = SqlFilterOrder.Ascending
+                                order = FilterOrder.Ascending
                             )
                         )
                     },
@@ -238,7 +238,7 @@ fun PrimaryAttrFilterSelector(
 fun ProWinsFilterSelector(
     filterOnProWins: () -> Unit,
     isEnabled: Boolean,
-    order: SqlFilterOrder? = null,
+    order: FilterOrder? = null,
     orderDesc: () -> Unit,
     orderAsc: () -> Unit,
 ){
@@ -281,8 +281,8 @@ fun ProWinsFilterSelector(
             descString = "100% - 0%",
             ascString = "0% - 100%",
             isEnabled = isEnabled,
-            isDescSelected = isEnabled && order is SqlFilterOrder.Descending,
-            isAscSelected = isEnabled && order is SqlFilterOrder.Ascending,
+            isDescSelected = isEnabled && order is FilterOrder.Descending,
+            isAscSelected = isEnabled && order is FilterOrder.Ascending,
             onUpdateHeroFilterDesc = {
                 orderDesc()
             },
@@ -305,7 +305,7 @@ fun ProWinsFilterSelector(
 fun HeroFilterSelector(
     filterOnHero: () -> Unit,
     isEnabled: Boolean,
-    order: SqlFilterOrder? = null,
+    order: FilterOrder? = null,
     orderDesc: () -> Unit,
     orderAsc: () -> Unit,
 ){
@@ -348,8 +348,8 @@ fun HeroFilterSelector(
             descString = "z -> a",
             ascString = "a -> z",
             isEnabled = isEnabled,
-            isDescSelected = isEnabled && order is SqlFilterOrder.Descending,
-            isAscSelected = isEnabled && order is SqlFilterOrder.Ascending,
+            isDescSelected = isEnabled && order is FilterOrder.Descending,
+            isAscSelected = isEnabled && order is FilterOrder.Ascending,
             onUpdateHeroFilterDesc = {
                 orderDesc()
             },

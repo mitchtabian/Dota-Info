@@ -2,11 +2,17 @@ package com.codingwithmitch.ui_herolist.ui
 
 import com.codingwithmitch.core.domain.UIComponent
 import com.codingwithmitch.core.domain.UIComponentState
-import com.codingwithmitch.ui_herolist.util.HeroFilter
+import com.codingwithmitch.dotainfo.hero_domain.HeroFilter
 
 sealed class HeroListEvents{
 
     object GetHeros: HeroListEvents()
+
+    object FilterHeros: HeroListEvents()
+
+    data class UpdateHeroName(
+        val heroName: String,
+    ): HeroListEvents()
 
     data class UpdateHeroFilter(
         val heroFilter: HeroFilter

@@ -8,6 +8,8 @@ import com.codingwithmitch.core.domain.DataState
 import com.codingwithmitch.core.domain.Queue
 import com.codingwithmitch.core.domain.UIComponent
 import com.codingwithmitch.core.util.Logger
+import com.codingwithmitch.dotainfo.hero_domain.HeroFilter
+import com.codingwithmitch.dotainfo.hero_interactors.FilterHeros
 import com.codingwithmitch.dotainfo.hero_interactors.GetHeros
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
@@ -24,6 +26,8 @@ constructor(
 
     val state: MutableState<HeroListState> = mutableStateOf(HeroListState())
 
+    private val filterHeros = FilterHeros()
+
     init {
         onTriggerEvent(HeroListEvents.GetHeros)
     }
@@ -33,8 +37,14 @@ constructor(
             is HeroListEvents.GetHeros -> {
                 getHeros()
             }
+            is HeroListEvents.FilterHeros -> {
+                filterHeros()
+            }
             is HeroListEvents.UpdateHeroFilter -> {
-                state.value = state.value.copy(heroFilter = event.heroFilter)
+                updateHeroFilter(event.heroFilter)
+            }
+            is HeroListEvents.UpdateHeroName -> {
+                updateHeroName(event.heroName)
             }
             is HeroListEvents.UpdateFilterDialogState -> {
                 state.value = state.value.copy(filterDialogState = event.uiComponentState)
@@ -53,6 +63,24 @@ constructor(
         }
     }
 
+    private fun updateHeroName(heroName: String) {
+        state.value = state.value.copy(heroName = heroName)
+    }
+
+    private fun updateHeroFilter(heroFilter: HeroFilter){
+        state.value = state.value.copy(heroFilter = heroFilter)
+        filterHeros()
+    }
+
+    private fun filterHeros(){
+        val filteredList = filterHeros.execute(
+            current = state.value.heros,
+            heroName = state.value.heroName,
+            heroFilter = state.value.heroFilter,
+        )
+        state.value = state.value.copy(filteredHeros = filteredList)
+    }
+
     private fun getHeros(){
         getHeros.execute().onEach { dataState ->
             when(dataState){
@@ -61,6 +89,7 @@ constructor(
                 }
                 is DataState.Data -> {
                     state.value = state.value.copy(heros = dataState.data?: listOf())
+                    filterHeros()
                 }
                 is DataState.Response -> {
                     if(dataState.uiComponent is UIComponent.None){

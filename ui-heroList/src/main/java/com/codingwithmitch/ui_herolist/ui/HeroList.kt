@@ -44,12 +44,12 @@ fun HeroList(
                     }
             ){
                 HeroListToolbar(
-                    query = "",
-                    onQueryChanged = {
-
+                    heroName = state.heroName,
+                    onHeroNameChanged = { heroName ->
+                        events(HeroListEvents.UpdateHeroName(heroName))
                     },
                     onExecuteSearch = {
-
+                        events(HeroListEvents.FilterHeros)
                     },
                     onShowFilterDialog = {
                         events(HeroListEvents.UpdateFilterDialogState(UIComponentState.Show))
@@ -60,7 +60,7 @@ fun HeroList(
                         .fillMaxSize()
                         .padding(top = 8.dp)
                 ) {
-                    items(state.heros){ hero ->
+                    items(state.filteredHeros){ hero ->
                         HeroListItem(
                             hero = hero,
                             onSelectHero = navigateToDetailScreen

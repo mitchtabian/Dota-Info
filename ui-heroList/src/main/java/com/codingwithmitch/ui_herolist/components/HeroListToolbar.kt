@@ -25,8 +25,8 @@ import androidx.compose.ui.unit.dp
 @ExperimentalComposeUiApi
 @Composable
 fun HeroListToolbar(
-    query: String,
-    onQueryChanged: (String) -> Unit,
+    heroName: String,
+    onHeroNameChanged: (String) -> Unit,
     onExecuteSearch: () -> Unit,
     onShowFilterDialog: () -> Unit,
 ) {
@@ -46,8 +46,11 @@ fun HeroListToolbar(
                     .fillMaxWidth(.9f)
                     .padding(8.dp)
                 ,
-                value = query,
-                onValueChange = { onQueryChanged(it) },
+                value = heroName,
+                onValueChange = {
+                    onHeroNameChanged(it)
+                    onExecuteSearch()
+                },
                 label = { Text(text = "Search") },
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Text,

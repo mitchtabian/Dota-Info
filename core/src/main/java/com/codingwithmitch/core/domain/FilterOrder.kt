@@ -1,8 +1,8 @@
 package com.codingwithmitch.core.domain
 
-sealed class SqlFilterOrder(val value: String, val uiValue: String,) {
+sealed class FilterOrder {
 
-    object Ascending: SqlFilterOrder("", "Asc")
+    object Ascending: FilterOrder()
 
-    object Descending: SqlFilterOrder("-", "Desc")
+    object Descending: FilterOrder()
 }

@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -88,10 +89,13 @@ fun HeroListItem(
                 ,
                 horizontalAlignment = Alignment.End
             ) {
-                val proWR: Int = remember{round(hero.proWins.toDouble() / hero.proPick.toDouble() * 100).toInt()}
+                // Using remember in list item does not behave correctly?
+//                val proWR: Int = remember{round(hero.proWins.toDouble() / hero.proPick.toDouble() * 100).toInt()}
+                val proWR: Int = round(hero.proWins.toDouble() / hero.proPick.toDouble() * 100).toInt()
                 Text(
                     text = "${proWR}%",
                     style = MaterialTheme.typography.caption,
+                    color = if(proWR > 50) Color(0xFF009a34) else MaterialTheme.colors.error,
                 )
             }
         }

@@ -154,22 +154,3 @@ AND rolePusher = :rolePusher
 getHero:
 SELECT * FROM hero_Entity
 WHERE id = :id;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

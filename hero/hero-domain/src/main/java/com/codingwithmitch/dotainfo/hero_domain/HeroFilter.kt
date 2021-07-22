@@ -1,16 +1,15 @@
-package com.codingwithmitch.ui_herolist.util
+package com.codingwithmitch.dotainfo.hero_domain
 
-import com.codingwithmitch.core.domain.SqlFilterOrder
-import com.codingwithmitch.dotainfo.hero_domain.HeroAttribute
+import com.codingwithmitch.core.domain.FilterOrder
 
 sealed class HeroFilter(val uiValue: String,) {
 
     data class Hero(
-        val order: SqlFilterOrder = SqlFilterOrder.Descending
+        val order: FilterOrder = FilterOrder.Descending
     ): HeroFilter("Hero")
 
     data class ProWins(
-        val order: SqlFilterOrder = SqlFilterOrder.Descending
+        val order: FilterOrder = FilterOrder.Descending
     ): HeroFilter("Pro win-rate")
 
     data class PrimaryAttribute(
