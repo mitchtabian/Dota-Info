@@ -12,6 +12,7 @@ class FilterHeros {
         current: List<Hero>,
         heroName: String,
         heroFilter: HeroFilter,
+        attributeFilter: HeroAttribute,
     ): List<Hero> {
         var filteredList: MutableList<Hero> = current.filter {
             it.localizedName.lowercase().contains(heroName.lowercase())
@@ -54,18 +55,20 @@ class FilterHeros {
                     }
                 }
             }
-            is HeroFilter.PrimaryAttribute -> {
-                when(heroFilter.attribute){
-                    is HeroAttribute.Strength -> {
-                        filteredList = filteredList.filter { it.primaryAttribute is HeroAttribute.Strength }.toMutableList()
-                    }
-                    is HeroAttribute.Agility -> {
-                        filteredList = filteredList.filter { it.primaryAttribute is HeroAttribute.Agility }.toMutableList()
-                    }
-                    is HeroAttribute.Intelligence -> {
-                        filteredList = filteredList.filter { it.primaryAttribute is HeroAttribute.Intelligence }.toMutableList()
-                    }
-                }
+        }
+
+        when(attributeFilter){
+            is HeroAttribute.Strength -> {
+                filteredList = filteredList.filter { it.primaryAttribute is HeroAttribute.Strength }.toMutableList()
+            }
+            is HeroAttribute.Agility -> {
+                filteredList = filteredList.filter { it.primaryAttribute is HeroAttribute.Agility }.toMutableList()
+            }
+            is HeroAttribute.Intelligence -> {
+                filteredList = filteredList.filter { it.primaryAttribute is HeroAttribute.Intelligence }.toMutableList()
+            }
+            is HeroAttribute.Unknown -> {
+                // do not filter
             }
         }
 

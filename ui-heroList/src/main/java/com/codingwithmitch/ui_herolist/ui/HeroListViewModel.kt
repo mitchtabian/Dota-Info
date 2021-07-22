@@ -8,6 +8,7 @@ import com.codingwithmitch.core.domain.DataState
 import com.codingwithmitch.core.domain.Queue
 import com.codingwithmitch.core.domain.UIComponent
 import com.codingwithmitch.core.util.Logger
+import com.codingwithmitch.dotainfo.hero_domain.HeroAttribute
 import com.codingwithmitch.dotainfo.hero_domain.HeroFilter
 import com.codingwithmitch.dotainfo.hero_interactors.FilterHeros
 import com.codingwithmitch.dotainfo.hero_interactors.GetHeros
@@ -43,6 +44,9 @@ constructor(
             is HeroListEvents.UpdateHeroFilter -> {
                 updateHeroFilter(event.heroFilter)
             }
+            is HeroListEvents.UpdateAttributeFilter -> {
+                updateAttributeFilter(event.attribute)
+            }
             is HeroListEvents.UpdateHeroName -> {
                 updateHeroName(event.heroName)
             }
@@ -63,6 +67,11 @@ constructor(
         }
     }
 
+    private fun updateAttributeFilter(attribute: HeroAttribute) {
+        state.value = state.value.copy(primaryAttrFilter = attribute)
+        filterHeros()
+    }
+
     private fun updateHeroName(heroName: String) {
         state.value = state.value.copy(heroName = heroName)
     }
@@ -77,6 +86,7 @@ constructor(
             current = state.value.heros,
             heroName = state.value.heroName,
             heroFilter = state.value.heroFilter,
+            attributeFilter = state.value.primaryAttrFilter,
         )
         state.value = state.value.copy(filteredHeros = filteredList)
     }

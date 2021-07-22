@@ -12,9 +12,6 @@ sealed class HeroFilter(val uiValue: String,) {
         val order: FilterOrder = FilterOrder.Descending
     ): HeroFilter("Pro win-rate")
 
-    data class PrimaryAttribute(
-        val attribute: HeroAttribute = HeroAttribute.Strength
-    ): HeroFilter("Primary Attribute")
 }
 
 
