@@ -4,7 +4,7 @@ Multi-module demo app that gets data from dota2 api.
 # Demo
 <p>
     <img src="https://github.com/mitchtabian/Dota-Info/blob/master/art/demo1.gif" width="25%">
-    <span width="25%"></span>
+    <span style="width: 25%;"></span>
     <img src="https://github.com/mitchtabian/Dota-Info/blob/master/art/demo2.gif" width="25%">
 </p>
 
