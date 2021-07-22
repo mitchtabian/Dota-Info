@@ -5,6 +5,7 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
@@ -39,92 +40,96 @@ fun HeroListFilter(
             )
         },
         text = {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-            ){
+            LazyColumn {
+                item{
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    ){
 
-                // Spacer isn't working for some reason so use Row to create space
-                EmptyRow()
+                        // Spacer isn't working for some reason so use Row to create space
+                        EmptyRow()
 
-                // Hero Filter
-                HeroFilterSelector(
-                    filterOnHero = {
-                        onUpdateHeroFilter(HeroFilter.Hero())
-                    },
-                    isEnabled = heroFilter is HeroFilter.Hero,
-                    order = if(heroFilter is HeroFilter.Hero) heroFilter.order else null,
-                    orderDesc = {
-                        onUpdateHeroFilter(
-                            HeroFilter.Hero(
-                                order = FilterOrder.Descending
-                            )
+                        // Hero Filter
+                        HeroFilterSelector(
+                            filterOnHero = {
+                                onUpdateHeroFilter(HeroFilter.Hero())
+                            },
+                            isEnabled = heroFilter is HeroFilter.Hero,
+                            order = if(heroFilter is HeroFilter.Hero) heroFilter.order else null,
+                            orderDesc = {
+                                onUpdateHeroFilter(
+                                    HeroFilter.Hero(
+                                        order = FilterOrder.Descending
+                                    )
+                                )
+                            },
+                            orderAsc = {
+                                onUpdateHeroFilter(
+                                    HeroFilter.Hero(
+                                        order = FilterOrder.Ascending
+                                    )
+                                )
+                            }
                         )
-                    },
-                    orderAsc = {
-                        onUpdateHeroFilter(
-                            HeroFilter.Hero(
-                                order = FilterOrder.Ascending
-                            )
+
+
+                        // Pro Win Rate Filter
+                        ProWinsFilterSelector(
+                            filterOnProWins = {
+                                onUpdateHeroFilter(
+                                    HeroFilter.ProWins()
+                                )
+                            },
+                            isEnabled = heroFilter is HeroFilter.ProWins,
+                            order = if(heroFilter is HeroFilter.ProWins) heroFilter.order else null,
+                            orderDesc = {
+                                onUpdateHeroFilter(
+                                    HeroFilter.ProWins(
+                                        order = FilterOrder.Descending
+                                    )
+                                )
+                            },
+                            orderAsc = {
+                                onUpdateHeroFilter(
+                                    HeroFilter.ProWins(
+                                        order = FilterOrder.Ascending
+                                    )
+                                )
+                            },
+                        )
+
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Divider(
+                            color = MaterialTheme.colors.onBackground.copy(alpha = 0.5f),
+                            thickness = 1.dp
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        // Primary Attribute Filter
+                        PrimaryAttrFilterSelector(
+                            removeFilterOnPrimaryAttr = {
+                                onUpdateAttributeFilter(HeroAttribute.Unknown)
+                            },
+                            attribute = attributeFilter,
+                            onFilterStr = {
+                                onUpdateAttributeFilter(
+                                    HeroAttribute.Strength
+                                )
+                            },
+                            onFilterAgi = {
+                                onUpdateAttributeFilter(
+                                    HeroAttribute.Agility
+                                )
+                            },
+                            onFilterInt = {
+                                onUpdateAttributeFilter(
+                                    HeroAttribute.Intelligence
+                                )
+                            },
                         )
                     }
-                )
-
-
-                // Pro Win Rate Filter
-                ProWinsFilterSelector(
-                    filterOnProWins = {
-                        onUpdateHeroFilter(
-                            HeroFilter.ProWins()
-                        )
-                    },
-                    isEnabled = heroFilter is HeroFilter.ProWins,
-                    order = if(heroFilter is HeroFilter.ProWins) heroFilter.order else null,
-                    orderDesc = {
-                        onUpdateHeroFilter(
-                            HeroFilter.ProWins(
-                                order = FilterOrder.Descending
-                            )
-                        )
-                    },
-                    orderAsc = {
-                        onUpdateHeroFilter(
-                            HeroFilter.ProWins(
-                                order = FilterOrder.Ascending
-                            )
-                        )
-                    },
-                )
-
-                Spacer(modifier = Modifier.height(8.dp))
-                Divider(
-                    color = MaterialTheme.colors.onBackground.copy(alpha = 0.5f),
-                    thickness = 1.dp
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-
-                // Primary Attribute Filter
-                PrimaryAttrFilterSelector(
-                    removeFilterOnPrimaryAttr = {
-                        onUpdateAttributeFilter(HeroAttribute.Unknown)
-                    },
-                    attribute = attributeFilter,
-                    onFilterStr = {
-                        onUpdateAttributeFilter(
-                            HeroAttribute.Strength
-                        )
-                    },
-                    onFilterAgi = {
-                        onUpdateAttributeFilter(
-                            HeroAttribute.Agility
-                        )
-                    },
-                    onFilterInt = {
-                        onUpdateAttributeFilter(
-                            HeroAttribute.Intelligence
-                        )
-                    },
-                )
+                }
             }
         },
         buttons = {
