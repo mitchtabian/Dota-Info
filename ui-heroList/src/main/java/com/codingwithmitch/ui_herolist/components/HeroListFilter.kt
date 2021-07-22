@@ -30,6 +30,8 @@ fun HeroListFilter(
     onCloseDialog: () -> Unit,
 ){
     AlertDialog(
+        modifier = Modifier
+            .padding(16.dp),
         onDismissRequest = {
             onCloseDialog()
         },
