@@ -50,6 +50,10 @@ https://docs.opendota.com/
 ### Hero Stats (GET)
 https://api.opendota.com/api/heroStats
 
+# Known issues
+1. [HeroListFilter.kt]()
+    - Changing the filter does not rebuild the dialog with the correct size.
+
 
 # Credits
 1. [Hristijan](https://twitter.com/funky_muse)

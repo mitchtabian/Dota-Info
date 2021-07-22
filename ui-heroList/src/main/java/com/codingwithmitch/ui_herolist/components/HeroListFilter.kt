@@ -1,5 +1,7 @@
 package com.codingwithmitch.ui_herolist.components
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
@@ -18,6 +20,7 @@ import com.codingwithmitch.core.domain.SqlFilterOrder
 import com.codingwithmitch.dotainfo.hero_domain.HeroAttribute
 import com.codingwithmitch.ui_herolist.util.HeroFilter
 
+@ExperimentalAnimationApi
 @Composable
 fun HeroListFilter(
     heroFilter: HeroFilter,
@@ -65,6 +68,7 @@ fun HeroListFilter(
                         )
                     }
                 )
+
 
                 // Pro Win Rate Filter
                 ProWinsFilterSelector(
@@ -159,6 +163,7 @@ fun HeroListFilter(
  * @param orderAgi: Set the order to Agility.
  * @param orderInt: Set the order to Intelligence.
  */
+@ExperimentalAnimationApi
 @Composable
 fun PrimaryAttrFilterSelector(
     filterOnPrimaryAttr: () -> Unit,
@@ -218,7 +223,6 @@ fun PrimaryAttrFilterSelector(
                 orderInt()
             }
         )
-
     }
 }
 
@@ -229,6 +233,7 @@ fun PrimaryAttrFilterSelector(
  * @param orderDesc: Set the order to descending.
  * @param orderAsc: Set the order to ascending.
  */
+@ExperimentalAnimationApi
 @Composable
 fun ProWinsFilterSelector(
     filterOnProWins: () -> Unit,
@@ -295,6 +300,7 @@ fun ProWinsFilterSelector(
  * @param orderDesc: Set the order to descending.
  * @param orderAsc: Set the order to ascending.
  */
+@ExperimentalAnimationApi
 @Composable
 fun HeroFilterSelector(
     filterOnHero: () -> Unit,
@@ -363,6 +369,7 @@ fun HeroFilterSelector(
  * @param onUpdateHeroFilterAgi: Update the filter to Agility
  * @param onUpdateHeroFilterInt: Update the filter to Intelligence
  */
+@ExperimentalAnimationApi
 @Composable
 fun PrimaryAttrSelector(
     isEnabled: Boolean,
@@ -374,100 +381,108 @@ fun PrimaryAttrSelector(
     onUpdateHeroFilterInt: () -> Unit,
 ){
     // Strength
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 24.dp, bottom = 8.dp)
-            .clickable(
-                interactionSource = MutableInteractionSource(),
-                indication = null, // disable the highlight
-                enabled = isEnabled,
-                onClick = {
+    AnimatedVisibility(visible = isEnabled) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 24.dp, bottom = 8.dp)
+                .clickable(
+                    interactionSource = MutableInteractionSource(),
+                    indication = null, // disable the highlight
+                    enabled = isEnabled,
+                    onClick = {
+                        onUpdateHeroFilterStr()
+                    },
+                )
+            ,
+        ){
+            Checkbox(
+                modifier = Modifier
+                    .padding(end = 8.dp)
+                    .align(Alignment.CenterVertically)
+                ,
+                enabled= isEnabled,
+                checked = isEnabled && isStr,
+                onCheckedChange = {
                     onUpdateHeroFilterStr()
                 },
+                colors = CheckboxDefaults.colors(MaterialTheme.colors.primary)
             )
-        ,
-    ){
-        Checkbox(
-            modifier = Modifier
-                .padding(end = 8.dp)
-                .align(Alignment.CenterVertically)
-            ,
-            enabled= isEnabled,
-            checked = isEnabled && isStr,
-            onCheckedChange = {
-                onUpdateHeroFilterStr()
-            },
-            colors = CheckboxDefaults.colors(MaterialTheme.colors.primary)
-        )
-        Text(
-            text = HeroAttribute.Strength.uiValue,
-            style = MaterialTheme.typography.body1,
-        )
+            Text(
+                text = HeroAttribute.Strength.uiValue,
+                style = MaterialTheme.typography.body1,
+            )
+        }
     }
+
     // Agility
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 24.dp, bottom = 8.dp)
-            .clickable(
-                interactionSource = MutableInteractionSource(),
-                indication = null, // disable the highlight
-                enabled = isEnabled,
-                onClick = {
+    AnimatedVisibility(visible = isEnabled) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 24.dp, bottom = 8.dp)
+                .clickable(
+                    interactionSource = MutableInteractionSource(),
+                    indication = null, // disable the highlight
+                    enabled = isEnabled,
+                    onClick = {
+                        onUpdateHeroFilterAgi()
+                    },
+                )
+            ,
+        ){
+            Checkbox(
+                modifier = Modifier
+                    .padding(end = 8.dp)
+                    .align(Alignment.CenterVertically)
+                ,
+                enabled= isEnabled,
+                checked = isEnabled && isAgi,
+                onCheckedChange = {
                     onUpdateHeroFilterAgi()
                 },
+                colors = CheckboxDefaults.colors(MaterialTheme.colors.primary)
             )
-        ,
-    ){
-        Checkbox(
-            modifier = Modifier
-                .padding(end = 8.dp)
-                .align(Alignment.CenterVertically)
-            ,
-            enabled= isEnabled,
-            checked = isEnabled && isAgi,
-            onCheckedChange = {
-                onUpdateHeroFilterAgi()
-            },
-            colors = CheckboxDefaults.colors(MaterialTheme.colors.primary)
-        )
-        Text(
-            text = HeroAttribute.Agility.uiValue,
-            style = MaterialTheme.typography.body1,
-        )
+            Text(
+                text = HeroAttribute.Agility.uiValue,
+                style = MaterialTheme.typography.body1,
+            )
+        }
     }
+
     // Intelligence
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 24.dp, bottom = 8.dp)
-            .clickable(
-                interactionSource = MutableInteractionSource(),
-                indication = null, // disable the highlight
-                enabled = isEnabled,
-                onClick = {
+    AnimatedVisibility(visible = isEnabled) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 24.dp, bottom = 8.dp)
+                .clickable(
+                    interactionSource = MutableInteractionSource(),
+                    indication = null, // disable the highlight
+                    enabled = isEnabled,
+                    onClick = {
+                        onUpdateHeroFilterInt()
+                    },
+                )
+            ,
+        ){
+            Checkbox(
+                modifier = Modifier
+                    .padding(end = 8.dp)
+                    .align(Alignment.CenterVertically)
+                ,
+                enabled= isEnabled,
+                checked = isEnabled && isInt,
+                onCheckedChange = {
                     onUpdateHeroFilterInt()
                 },
+                colors = CheckboxDefaults.colors(MaterialTheme.colors.primary)
             )
-        ,
-    ){
-        Checkbox(
-            modifier = Modifier
-                .padding(end = 8.dp)
-                .align(Alignment.CenterVertically)
-            ,
-            enabled= isEnabled,
-            checked = isEnabled && isInt,
-            onCheckedChange = {
-                onUpdateHeroFilterInt()
-            },
-            colors = CheckboxDefaults.colors(MaterialTheme.colors.primary)
-        )
-        Text(
-            text = HeroAttribute.Intelligence.uiValue,
-            style = MaterialTheme.typography.body1,
-        )
+            Text(
+                text = HeroAttribute.Intelligence.uiValue,
+                style = MaterialTheme.typography.body1,
+            )
+        }
     }
 }
 
@@ -480,6 +495,7 @@ fun PrimaryAttrSelector(
  * @param onUpdateHeroFilterDesc: Set the filter to Descending.
  * @param onUpdateHeroFilterAsc: Set the filter to Ascending.
  */
+@ExperimentalAnimationApi
 @Composable
 fun OrderSelector(
     descString: String,
@@ -491,69 +507,73 @@ fun OrderSelector(
     onUpdateHeroFilterAsc: () -> Unit,
 ){
     // Descending Order
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 24.dp, bottom = 8.dp)
-            .clickable(
-                interactionSource = MutableInteractionSource(),
-                indication = null, // disable the highlight
-                enabled = isEnabled,
-                onClick = {
+    AnimatedVisibility(visible = isEnabled) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 24.dp, bottom = 8.dp)
+                .clickable(
+                    interactionSource = MutableInteractionSource(),
+                    indication = null, // disable the highlight
+                    enabled = isEnabled,
+                    onClick = {
+                        onUpdateHeroFilterDesc()
+                    },
+                )
+            ,
+        ){
+            Checkbox(
+                modifier = Modifier
+                    .padding(end = 8.dp)
+                    .align(Alignment.CenterVertically)
+                ,
+                enabled= isEnabled,
+                checked = isEnabled && isDescSelected,
+                onCheckedChange = {
                     onUpdateHeroFilterDesc()
                 },
+                colors = CheckboxDefaults.colors(MaterialTheme.colors.primary)
             )
-        ,
-    ){
-        Checkbox(
-            modifier = Modifier
-                .padding(end = 8.dp)
-                .align(Alignment.CenterVertically)
-            ,
-            enabled= isEnabled,
-            checked = isEnabled && isDescSelected,
-            onCheckedChange = {
-                onUpdateHeroFilterDesc()
-            },
-            colors = CheckboxDefaults.colors(MaterialTheme.colors.primary)
-        )
-        Text(
-            text = descString,
-            style = MaterialTheme.typography.body1,
-        )
+            Text(
+                text = descString,
+                style = MaterialTheme.typography.body1,
+            )
+        }
     }
 
     // Ascending Order
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 24.dp, bottom = 8.dp)
-            .clickable(
-                interactionSource = MutableInteractionSource(),
-                indication = null, // disable the highlight
-                enabled = isEnabled,
-                onClick = {
+    AnimatedVisibility(visible = isEnabled) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 24.dp, bottom = 8.dp)
+                .clickable(
+                    interactionSource = MutableInteractionSource(),
+                    indication = null, // disable the highlight
+                    enabled = isEnabled,
+                    onClick = {
+                        onUpdateHeroFilterAsc()
+                    },
+                )
+            ,
+        ){
+            Checkbox(
+                modifier = Modifier
+                    .padding(end = 8.dp)
+                    .align(Alignment.CenterVertically)
+                ,
+                enabled= isEnabled,
+                checked = isEnabled && isAscSelected,
+                onCheckedChange = {
                     onUpdateHeroFilterAsc()
                 },
+                colors = CheckboxDefaults.colors(MaterialTheme.colors.primary)
             )
-        ,
-    ){
-        Checkbox(
-            modifier = Modifier
-                .padding(end = 8.dp)
-                .align(Alignment.CenterVertically)
-            ,
-            enabled= isEnabled,
-            checked = isEnabled && isAscSelected,
-            onCheckedChange = {
-                onUpdateHeroFilterAsc()
-            },
-            colors = CheckboxDefaults.colors(MaterialTheme.colors.primary)
-        )
-        Text(
-            text = ascString,
-            style = MaterialTheme.typography.body1,
-        )
+            Text(
+                text = ascString,
+                style = MaterialTheme.typography.body1,
+            )
+        }
     }
 }
 
