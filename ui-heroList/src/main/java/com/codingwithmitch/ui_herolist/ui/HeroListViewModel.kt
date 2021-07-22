@@ -22,12 +22,11 @@ class HeroListViewModel
 @Inject
 constructor(
     private val getHeros: GetHeros,
+    private val filterHeros: FilterHeros,
     private val logger: Logger,
 ): ViewModel(){
 
     val state: MutableState<HeroListState> = mutableStateOf(HeroListState())
-
-    private val filterHeros = FilterHeros()
 
     init {
         onTriggerEvent(HeroListEvents.GetHeros)

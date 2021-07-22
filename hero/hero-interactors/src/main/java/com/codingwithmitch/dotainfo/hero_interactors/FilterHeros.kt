@@ -6,6 +6,10 @@ import com.codingwithmitch.dotainfo.hero_domain.HeroAttribute
 import com.codingwithmitch.dotainfo.hero_domain.HeroFilter
 import kotlin.math.round
 
+/**
+ * I decided to make a use case out of this even though it does not access any datasources.
+ * This helps to keep the filtering logic isolated.
+ */
 class FilterHeros {
 
     fun execute(
