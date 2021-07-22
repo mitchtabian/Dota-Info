@@ -1,4 +1,4 @@
-package com.codingwithmitch.ui_herodetail
+package com.codingwithmitch.ui_herodetail.ui
 
 import com.codingwithmitch.core.domain.UIComponent
 

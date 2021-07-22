@@ -1,51 +1,48 @@
-package com.codingwithmitch.ui_herodetail
+package com.codingwithmitch.ui_herolist.ui
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.codingwithmitch.core.domain.DataState
 import com.codingwithmitch.core.domain.Queue
 import com.codingwithmitch.core.domain.UIComponent
 import com.codingwithmitch.core.util.Logger
-import com.codingwithmitch.dotainfo.hero_interactors.GetHeroFromCache
+import com.codingwithmitch.dotainfo.hero_interactors.GetHeros
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
-class HeroDetailViewModel
+class HeroListViewModel
 @Inject
 constructor(
-    private val getHeroFromCache: GetHeroFromCache,
-    private val savedStateHandle: SavedStateHandle,
+    private val getHeros: GetHeros,
     private val logger: Logger,
 ): ViewModel(){
 
-    val state: MutableState<HeroDetailState> = mutableStateOf(HeroDetailState())
+    val state: MutableState<HeroListState> = mutableStateOf(HeroListState())
 
     init {
-        savedStateHandle.get<Int>("heroId")?.let { heroId ->
-            onTriggerEvent(HeroDetailEvents.GetHeroFromCache(heroId))
-        }?: showError(
-            uiComponent = UIComponent.Dialog(
-                title = "Error",
-                description = "Unable to retrieve the details for this hero."
-            )
-        )
+        onTriggerEvent(HeroListEvents.GetHeros)
     }
 
-    fun onTriggerEvent(event: HeroDetailEvents){
+    fun onTriggerEvent(event: HeroListEvents){
         when(event){
-            is HeroDetailEvents.GetHeroFromCache -> {
-                getHeroFromCache(event.id)
+            is HeroListEvents.GetHeros -> {
+                getHeros()
             }
-            is HeroDetailEvents.OnRemoveHeadFromQueue -> {
+            is HeroListEvents.UpdateHeroFilter -> {
+                state.value = state.value.copy(heroFilter = event.heroFilter)
+            }
+            is HeroListEvents.UpdateFilterDialogState -> {
+                state.value = state.value.copy(filterDialogState = event.uiComponentState)
+            }
+            is HeroListEvents.OnRemoveHeadFromQueue -> {
                 removeHeadMessage()
             }
-            is HeroDetailEvents.Error -> {
+            is HeroListEvents.Error -> {
                 if(event.uiComponent is UIComponent.None){
                     logger.log("getHeros: ${(event.uiComponent as UIComponent.None).message}")
                 }
@@ -56,22 +53,14 @@ constructor(
         }
     }
 
-    private fun showError(uiComponent: UIComponent){
-        onTriggerEvent(
-            HeroDetailEvents.Error(
-                uiComponent = uiComponent
-            )
-        )
-    }
-
-    private fun getHeroFromCache(id: Int){
-        getHeroFromCache.execute(id).onEach { dataState ->
+    private fun getHeros(){
+        getHeros.execute().onEach { dataState ->
             when(dataState){
                 is DataState.Loading -> {
                     state.value = state.value.copy(progressBarState = dataState.progressBarState)
                 }
                 is DataState.Data -> {
-                    state.value = state.value.copy(hero = dataState.data)
+                    state.value = state.value.copy(heros = dataState.data?: listOf())
                 }
                 is DataState.Response -> {
                     if(dataState.uiComponent is UIComponent.None){

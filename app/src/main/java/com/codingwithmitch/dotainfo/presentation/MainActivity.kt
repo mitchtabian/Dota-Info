@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
@@ -12,12 +13,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.codingwithmitch.dotainfo.presentation.navigation.Screen
 import com.codingwithmitch.dotainfo.presentation.theme.DotaInfoTheme
-import com.codingwithmitch.ui_herodetail.HeroDetail
-import com.codingwithmitch.ui_herodetail.HeroDetailViewModel
-import com.codingwithmitch.ui_herolist.HeroList
-import com.codingwithmitch.ui_herolist.HeroListViewModel
+import com.codingwithmitch.ui_herodetail.ui.HeroDetail
+import com.codingwithmitch.ui_herodetail.ui.HeroDetailViewModel
+import com.codingwithmitch.ui_herolist.ui.HeroList
+import com.codingwithmitch.ui_herolist.ui.HeroListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+@ExperimentalComposeUiApi
 @ExperimentalAnimationApi
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -39,6 +41,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@ExperimentalComposeUiApi
 @ExperimentalAnimationApi
 private fun NavGraphBuilder.addHeroList(navController: NavController) {
     composable(

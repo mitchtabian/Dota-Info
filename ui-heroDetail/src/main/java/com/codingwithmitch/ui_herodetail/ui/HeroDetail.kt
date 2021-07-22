@@ -1,4 +1,4 @@
-package com.codingwithmitch.ui_herodetail
+package com.codingwithmitch.ui_herodetail.ui
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.fadeIn
@@ -24,6 +24,7 @@ import com.codingwithmitch.components.DefaultScreenUI
 import com.codingwithmitch.dotainfo.hero_domain.Hero
 import com.codingwithmitch.dotainfo.hero_domain.maxAttackDmg
 import com.codingwithmitch.dotainfo.hero_domain.minAttackDmg
+import com.codingwithmitch.ui_herodetail.R
 import kotlin.math.round
 
 @ExperimentalAnimationApi
