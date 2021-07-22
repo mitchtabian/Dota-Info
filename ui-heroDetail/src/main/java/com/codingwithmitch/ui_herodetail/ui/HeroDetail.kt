@@ -19,6 +19,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import coil.ImageLoader
 import coil.compose.rememberImagePainter
 import com.codingwithmitch.components.DefaultScreenUI
 import com.codingwithmitch.dotainfo.hero_domain.Hero
@@ -32,6 +33,7 @@ import kotlin.math.round
 fun HeroDetail(
     state: HeroDetailState,
     events: (HeroDetailEvents) -> Unit,
+    imageLoader: ImageLoader,
 ){
     DefaultScreenUI(
         queue = state.errorQueue,
@@ -53,10 +55,9 @@ fun HeroDetail(
                     ){
                         val painter = rememberImagePainter(
                             hero.img,
+                            imageLoader = imageLoader,
                             builder = {
                                 placeholder(if(isSystemInDarkTheme()) R.drawable.black_background else R.drawable.white_background)
-                                error(R.drawable.error_image)
-                                fadeIn()
                             }
                         )
                         Image(
@@ -91,10 +92,9 @@ fun HeroDetail(
                                 )
                                 val iconPainter = rememberImagePainter(
                                     hero.icon,
+                                    imageLoader = imageLoader,
                                     builder = {
                                         placeholder(if(isSystemInDarkTheme()) R.drawable.black_background else R.drawable.white_background)
-                                        error(R.drawable.error_image)
-                                        fadeIn()
                                     }
                                 )
                                 Image(

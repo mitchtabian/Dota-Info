@@ -1,7 +1,6 @@
 package com.codingwithmitch.ui_herolist.components
 
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.fadeIn
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -17,9 +16,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import coil.ImageLoader
 import coil.compose.rememberImagePainter
 import com.codingwithmitch.dotainfo.hero_domain.Hero
-import com.codingwithmitch.ui_herolist.R
 import kotlin.math.round
 
 @ExperimentalAnimationApi
@@ -27,6 +26,7 @@ import kotlin.math.round
 fun HeroListItem(
     hero: Hero,
     onSelectHero: (Int) -> Unit,
+    imageLoader: ImageLoader,
 ){
     Surface(
         modifier = Modifier
@@ -47,10 +47,9 @@ fun HeroListItem(
         ){
             val painter = rememberImagePainter(
                 hero.img,
+                imageLoader = imageLoader,
                 builder = {
-                    placeholder(if(isSystemInDarkTheme()) R.drawable.black_background else R.drawable.white_background)
-                    error(R.drawable.error_image)
-                    fadeIn()
+                    placeholder(if(isSystemInDarkTheme()) com.codingwithmitch.ui_herolist.R.drawable.black_background else com.codingwithmitch.ui_herolist.R.drawable.white_background)
                 }
             )
             Image(

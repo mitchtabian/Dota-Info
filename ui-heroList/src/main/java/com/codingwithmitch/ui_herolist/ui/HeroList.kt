@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import coil.ImageLoader
 import com.codingwithmitch.components.DefaultScreenUI
 import com.codingwithmitch.core.domain.UIComponentState
 import com.codingwithmitch.ui_herolist.components.HeroListFilter
@@ -28,6 +29,7 @@ fun HeroList(
     state: HeroListState,
     events: (HeroListEvents) -> Unit,
     navigateToDetailScreen: (Int) -> Unit,
+    imageLoader: ImageLoader,
 ){
     DefaultScreenUI(
         queue = state.errorQueue,
@@ -67,7 +69,8 @@ fun HeroList(
                         items(state.filteredHeros){ hero ->
                             HeroListItem(
                                 hero = hero,
-                                onSelectHero = navigateToDetailScreen
+                                onSelectHero = navigateToDetailScreen,
+                                imageLoader = imageLoader,
                             )
                         }
                     }
