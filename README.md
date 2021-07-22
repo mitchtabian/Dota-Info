@@ -59,7 +59,7 @@ https://docs.opendota.com/
 https://api.opendota.com/api/heroStats
 
 # Known issues
-1. [HeroListFilter.kt]()
+1. [HeroListFilter.kt](ui-heroLIst/src/main/java/com/codingwithmitch/ui_herolist/components/HeroListFilter.kt)
     - Changing the filter does not rebuild the dialog with the correct size.
 
 
