@@ -1,6 +1,10 @@
 # Work in progress
 Multi-module demo app that gets data from dota2 api.
 
+# Demo
+![App Demo1](art/demo1.gif)
+![App Demo2](art/demo2.gif)
+
 # App Design (Likely to change)
 
 ### Module 1 (app)
