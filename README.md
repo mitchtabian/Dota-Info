@@ -2,8 +2,13 @@
 Multi-module demo app that gets data from dota2 api.
 
 # Demo
-![App Demo1](art/demo1.gif)
-![App Demo2](art/demo2.gif)
+<div style="width: 45%">
+    ![App Demo1](art/demo1.gif)
+</div>
+<div style="width: 45%">
+    ![App Demo2](art/demo2.gif)
+</div>
+
 
 # App Design (Likely to change)
 
