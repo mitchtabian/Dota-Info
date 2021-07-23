@@ -10,4 +10,10 @@ dependencies {
     "implementation"(project(Modules.heroInteractors))
 
     "implementation"(Coil.coil)
+
+    "androidTestImplementation"(ComposeTest.uiTestJunit4)
+    "debugImplementation"(ComposeTest.uiTestManifest)
+    "androidTestImplementation"(Junit.junit4)
+    "androidTestImplementation"(HiltTest.hiltAndroidTesting)
+    "kaptAndroidTest"(Hilt.compiler)
 }
