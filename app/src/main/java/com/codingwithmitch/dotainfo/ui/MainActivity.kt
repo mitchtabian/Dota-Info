@@ -1,4 +1,4 @@
-package com.codingwithmitch.dotainfo.presentation
+package com.codingwithmitch.dotainfo.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -14,8 +14,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import coil.ImageLoader
-import com.codingwithmitch.dotainfo.presentation.navigation.Screen
-import com.codingwithmitch.dotainfo.presentation.theme.DotaInfoTheme
+import com.codingwithmitch.dotainfo.ui.navigation.Screen
+import com.codingwithmitch.dotainfo.ui.theme.DotaInfoTheme
 import com.codingwithmitch.ui_herodetail.ui.HeroDetail
 import com.codingwithmitch.ui_herodetail.ui.HeroDetailViewModel
 import com.codingwithmitch.ui_herolist.ui.HeroList

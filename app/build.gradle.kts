@@ -3,6 +3,7 @@ plugins {
     kotlin("android")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
+    kotlin(KotlinPlugins.serialization) version Kotlin.version
 }
 
 android {
@@ -46,6 +47,8 @@ android {
 dependencies{
 
     implementation(project(Modules.core))
+    implementation(project(Modules.heroDataSource))
+    implementation(project(Modules.heroDomain))
     implementation(project(Modules.heroInteractors))
 
     implementation(project(Modules.ui_heroDetail))
@@ -58,7 +61,6 @@ dependencies{
     implementation(AndroidX.lifecycleVmKtx)
 
     implementation(Compose.activity)
-
     implementation(Compose.ui)
     implementation(Compose.material)
     implementation(Compose.tooling)
@@ -70,19 +72,17 @@ dependencies{
     implementation(Hilt.android)
     kapt(Hilt.compiler)
 
+    implementation(Kotlinx.serialization)
     implementation(Ktor.core)
 
     implementation(SqlDelight.androidDriver)
 
-    androidTestImplementation(Junit.junit4)
     androidTestImplementation(AndroidXTest.runner)
-    androidTestImplementation(AndroidXTest.espressoCore)
-    androidTestImplementation(AndroidXTest.rules)
-    androidTestImplementation(AndroidXTest.junitExt)
     androidTestImplementation(ComposeTest.uiTestJunit4)
+    debugImplementation(ComposeTest.uiTestManifest)
     androidTestImplementation(HiltTest.hiltAndroidTesting)
     kaptAndroidTest(Hilt.compiler)
-    debugImplementation(ComposeTest.uiTestManifest)
+    androidTestImplementation(Junit.junit4)
 }
 
 

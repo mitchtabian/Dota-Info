@@ -1,4 +1,4 @@
-package com.codingwithmitch.ui_heroist
+package com.codingwithmitch.dotainfo.coil
 
 import android.content.Context
 import android.graphics.Color

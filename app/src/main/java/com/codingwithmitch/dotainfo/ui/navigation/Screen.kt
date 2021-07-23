@@ -1,4 +1,4 @@
-package com.codingwithmitch.dotainfo.presentation.navigation
+package com.codingwithmitch.dotainfo.ui.navigation
 
 import androidx.navigation.NavType
 import androidx.navigation.compose.NamedNavArgument

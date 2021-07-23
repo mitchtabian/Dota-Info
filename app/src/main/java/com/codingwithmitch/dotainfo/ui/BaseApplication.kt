@@ -1,4 +1,4 @@
-package com.codingwithmitch.dotainfo.presentation
+package com.codingwithmitch.dotainfo.ui
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
