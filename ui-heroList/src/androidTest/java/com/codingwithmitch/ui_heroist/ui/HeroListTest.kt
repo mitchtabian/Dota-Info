@@ -6,7 +6,6 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
-import coil.ImageLoader
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -17,8 +16,6 @@ class HeroListTest {
 
     @get:Rule
     val composeTestRule = createComposeRule()
-
-    lateinit var imageLoader: ImageLoader
 
     @Before
     fun setUp() {
