@@ -1,5 +1,18 @@
 # Work in progress
-Multi-module demo app that gets data from dota2 api.
+Multi-module demo app that gets data from a Dota2 api.
+
+| Module name        | Type                 | Description                                                      |
+| -------------      | -------------        | -------------                                                    |
+| [app](/app/)                | Android Application  | MainActivity, BaseApplication, Theme, Hilt setup.                |
+| [core](/core/)               | Java/Kotlin Library  | Core business models and classes.                                |
+| [hero-datasource](/hero-datasource/)    | Java/Kotlin Library  | Data-sources (network and cache) for the hero Module.            |
+| [hero-domain  ](/hero-domain/)        | Java/Kotlin Library  | Domain models and classes for the hero Module.                   |
+| [hero-interactors ](/hero-interactors/)   | Java/Kotlin Library  | Use-cases for the hero Module.                                   |
+| [ui-heroList](/ui-heroList/)        | Android Library      | UI components for the HeroList screen.                           |
+| [ui-heroDetail](/ui-heroDetail/)      | Android Library      | UI components for the HeroDetail screen.                         |
+| [constants](/constants/)          | Java/Kotlin Library  | Random constants.                                                |
+| [components](/components/)         | Android Library      | Common Composables.                                              |
+
 
 # List to Detail screen
 <img src="https://github.com/mitchtabian/Dota-Info/blob/master/art/demo1.gif" width="25%">
@@ -17,21 +30,6 @@ I wrote unit tests for every use-case.
 
 ### Compose UI Tests
 Coming soon.
-
-# Modularization
-
-| Module name        | Type                 | Description                                                      |
-| -------------      | -------------        | -------------                                                    |
-| app                | Android Application  | MainActivity, BaseApplication, Theme, Hilt setup.                |
-| core               | Java/Kotlin Library  | Core business models and classes.                                |
-| hero-datasource    | Java/Kotlin Library  | Data-sources (network and cache) for the hero Module.             |
-| hero-domain        | Java/Kotlin Library  | Domain models and classes for the hero Module.                   |
-| hero-interactors   | Java/Kotlin Library  | Use-cases for the hero Module.                                   |
-| ui-heroList        | Android Library      | UI components for the HeroList screen.                           |
-| ui-heroDetail      | Android Library      | UI components for the HeroDetail screen.                         |
-| constants          | Java/Kotlin Library  | Random constants.                                                |
-| components         | Android Library      | Common Composables.                                              |
-
 
 # build.gradle files
 There are 3 types of build.gradle files.
