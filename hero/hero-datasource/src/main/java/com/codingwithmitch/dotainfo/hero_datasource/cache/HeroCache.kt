@@ -7,6 +7,8 @@ interface HeroCache {
 
     suspend fun getHero(id: Int): Hero?
 
+    suspend fun removeHero(id: Int)
+
     suspend fun selectAll(): List<Hero>
 
     suspend fun insert(hero: Hero)

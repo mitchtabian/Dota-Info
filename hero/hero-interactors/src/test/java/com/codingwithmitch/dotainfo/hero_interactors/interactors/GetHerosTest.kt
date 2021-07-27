@@ -9,7 +9,9 @@ import com.codingwithmitch.dotainfo.hero_interactors.datasource.cache.HeroCacheF
 import com.codingwithmitch.dotainfo.hero_interactors.datasource.cache.HeroDatabaseFake
 import com.codingwithmitch.dotainfo.hero_interactors.datasource.network.HeroServiceFake
 import com.codingwithmitch.dotainfo.hero_interactors.datasource.network.HeroServiceResponseType
+import com.codingwithmitch.dotainfo.hero_interactors.datasource.network.data.HeroDataValid
 import com.codingwithmitch.dotainfo.hero_interactors.datasource.network.data.HeroDataValid.NUM_HEROS
+import com.codingwithmitch.dotainfo.hero_interactors.datasource.network.serializeHeroData
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
@@ -148,8 +150,8 @@ class GetHerosTest {
         // setup
         val heroDatabase = HeroDatabaseFake()
         val heroCache = HeroCacheFake(heroDatabase)
-        var heroService = HeroServiceFake.build(
-            type = HeroServiceResponseType.GoodData // Good Data
+        val heroService = HeroServiceFake.build(
+            type = HeroServiceResponseType.MalformedData // Malformed Data
         )
 
         getHeros = GetHeros(
@@ -162,21 +164,12 @@ class GetHerosTest {
         assert(cachedHeros.isEmpty())
 
         // Add some data to the cache by executing a successful request
-        getHeros.execute().toList()
+        val heroData = serializeHeroData(HeroDataValid.data)
+        heroCache.insert(heroData)
 
         // Confirm the cache is not empty anymore
         cachedHeros = heroCache.selectAll()
         assert(cachedHeros.size == 121)
-
-        // configure network to fail
-        heroService = HeroServiceFake.build(
-            type = HeroServiceResponseType.MalformedData // Malformed Data
-        )
-
-        getHeros = GetHeros(
-            cache = heroCache,
-            service = heroService
-        )
 
         // Execute the use-case
         val emissions = getHeros.execute().toList()

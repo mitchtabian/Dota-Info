@@ -12,6 +12,10 @@ class HeroCacheFake(
         return db.heros.find { it.id == id }
     }
 
+    override suspend fun removeHero(id: Int) {
+        db.heros.removeIf { it.id == id }
+    }
+
     override suspend fun selectAll(): List<Hero> {
         return db.heros
     }

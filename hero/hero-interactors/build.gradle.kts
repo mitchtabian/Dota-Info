@@ -15,4 +15,5 @@ dependencies {
 
     "testImplementation"(Junit.junit4)
     "testImplementation"(Ktor.ktorClientMock)
+    "testImplementation"(Ktor.clientSerialization)
 }

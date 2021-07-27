@@ -16,6 +16,10 @@ class HeroCacheImpl(
         return queries.getHero(id.toLong()).executeAsOne().toHero()
     }
 
+    override suspend fun removeHero(id: Int) {
+        queries.removeHero(id.toLong())
+    }
+
     override suspend fun selectAll(): List<Hero> {
         return queries.selectAll().executeAsList().map { it.toHero() }
     }

@@ -24,6 +24,10 @@ class GetHeroFromCache(
             // emit data from network
             val cachedHero = cache.getHero(id)
 
+            if(cachedHero == null){
+                throw Exception("That hero does not exist in the cache.")
+            }
+
             emit(DataState.Data(cachedHero))
         }catch (e: Exception){
             e.printStackTrace()
