@@ -7,6 +7,15 @@ Multi-module demo app that gets data from dota2 api.
 # Filtering
 <img src="https://github.com/mitchtabian/Dota-Info/blob/master/art/demo2.gif" width="25%">
 
+# Unit Tests
+I wrote unit tests for every use-case.
+1. [GetHerosTest.kt](hero/hero-interactors/src/test/java/com/codingwithmitch/dotainfo/hero_interactors/GetHerosTest.kt)
+1. [GetHeroFromCacheTest.kt](hero/hero-interactors/src/test/java/com/codingwithmitch/dotainfo/hero_interactors/GetHeroFromCacheTest.kt)
+1. [FilterHerosTest.kt](hero/hero-interactors/src/test/java/com/codingwithmitch/dotainfo/hero_interactors/FilterHerosTest.kt)
+
+# Compose UI Tests
+Coming soon.
+
 # App Design (Likely to change)
 
 ### Module 1 (app)
