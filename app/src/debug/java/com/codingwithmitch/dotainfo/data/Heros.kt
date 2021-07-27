@@ -6,12 +6,15 @@ import com.codingwithmitch.dotainfo.hero_domain.Hero
 import kotlinx.serialization.*
 import kotlinx.serialization.json.*
 
+
 object Heros {
 
+    private val json = Json {
+        ignoreUnknownKeys = true
+    }
+
     fun serializeHeroData(jsonData: String): List<Hero>{
-        val heros: List<Hero> = Json{
-            ignoreUnknownKeys = true
-        }.decodeFromString<List<HeroDto>>(jsonData).map { it.toHero() }
+        val heros: List<Hero> = json.decodeFromString<List<HeroDto>>(jsonData).map { it.toHero() }
         return heros
     }
 

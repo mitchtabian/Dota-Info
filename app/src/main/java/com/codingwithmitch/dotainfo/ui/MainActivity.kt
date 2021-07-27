@@ -57,7 +57,7 @@ class MainActivity : ComponentActivity() {
 
 @ExperimentalComposeUiApi
 @ExperimentalAnimationApi
-private fun NavGraphBuilder.addHeroList(
+fun NavGraphBuilder.addHeroList(
     navController: NavController,
     imageLoader: ImageLoader,
 ) {
@@ -77,7 +77,7 @@ private fun NavGraphBuilder.addHeroList(
 }
 
 @ExperimentalAnimationApi
-private fun NavGraphBuilder.addHeroDetail(
+fun NavGraphBuilder.addHeroDetail(
     imageLoader: ImageLoader,
 ) {
     composable(
@@ -93,21 +93,7 @@ private fun NavGraphBuilder.addHeroDetail(
     }
 }
 
-@ExperimentalAnimationApi
-@Composable
-fun EnterAnimation(content: @Composable () -> Unit) {
-    AnimatedVisibility(
-        visible = true,
-        enter = slideInVertically(
-            initialOffsetY = { -40 }
-        ) + expandVertically(
-            expandFrom = Alignment.Top
-        ) + fadeIn(initialAlpha = 0.3f),
-        exit = slideOutVertically() + shrinkVertically() + fadeOut(),
-    ){
-        content()
-    }
-}
+
 
 
 
