@@ -9,7 +9,6 @@ import com.codingwithmitch.dotainfo.hero_domain.Hero
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-
 /**
  * 1. Retrieve the heros from the network
  * 2. Cache the heros

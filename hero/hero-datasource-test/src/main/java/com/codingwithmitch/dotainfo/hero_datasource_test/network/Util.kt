@@ -1,4 +1,4 @@
-package com.codingwithmitch.dotainfo.hero_interactors.datasource.network
+package com.codingwithmitch.dotainfo.hero_datasource_test.network
 
 import com.codingwithmitch.dotainfo.hero_datasource.network.model.HeroDto
 import com.codingwithmitch.dotainfo.hero_datasource.network.model.toHero

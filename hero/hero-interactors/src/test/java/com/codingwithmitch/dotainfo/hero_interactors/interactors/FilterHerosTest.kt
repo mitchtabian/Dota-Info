@@ -1,11 +1,11 @@
 package com.codingwithmitch.dotainfo.hero_interactors.interactors
 
 import com.codingwithmitch.core.domain.FilterOrder
+import com.codingwithmitch.dotainfo.hero_datasource_test.network.data.HeroDataValid
+import com.codingwithmitch.dotainfo.hero_datasource_test.network.serializeHeroData
 import com.codingwithmitch.dotainfo.hero_domain.HeroAttribute
 import com.codingwithmitch.dotainfo.hero_domain.HeroFilter
 import com.codingwithmitch.dotainfo.hero_interactors.FilterHeros
-import com.codingwithmitch.dotainfo.hero_interactors.datasource.network.data.HeroDataValid
-import com.codingwithmitch.dotainfo.hero_interactors.datasource.network.serializeHeroData
 import org.junit.Test
 import kotlin.math.round
 

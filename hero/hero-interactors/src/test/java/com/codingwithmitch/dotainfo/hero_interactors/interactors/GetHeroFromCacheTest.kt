@@ -3,12 +3,12 @@ package com.codingwithmitch.dotainfo.hero_interactors.interactors
 import com.codingwithmitch.core.domain.DataState
 import com.codingwithmitch.core.domain.ProgressBarState
 import com.codingwithmitch.core.domain.UIComponent
+import com.codingwithmitch.dotainfo.hero_datasource_test.cache.HeroCacheFake
+import com.codingwithmitch.dotainfo.hero_datasource_test.cache.HeroDatabaseFake
+import com.codingwithmitch.dotainfo.hero_datasource_test.network.data.HeroDataValid
+import com.codingwithmitch.dotainfo.hero_datasource_test.network.serializeHeroData
 import com.codingwithmitch.dotainfo.hero_domain.Hero
 import com.codingwithmitch.dotainfo.hero_interactors.GetHeroFromCache
-import com.codingwithmitch.dotainfo.hero_interactors.datasource.cache.HeroCacheFake
-import com.codingwithmitch.dotainfo.hero_interactors.datasource.cache.HeroDatabaseFake
-import com.codingwithmitch.dotainfo.hero_interactors.datasource.network.data.HeroDataValid
-import com.codingwithmitch.dotainfo.hero_interactors.datasource.network.serializeHeroData
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
 import org.junit.Test

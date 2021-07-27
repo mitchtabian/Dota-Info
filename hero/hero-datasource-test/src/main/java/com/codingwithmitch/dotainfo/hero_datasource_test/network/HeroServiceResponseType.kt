@@ -1,4 +1,4 @@
-package com.codingwithmitch.dotainfo.hero_interactors.datasource.network
+package com.codingwithmitch.dotainfo.hero_datasource_test.network
 
 sealed class HeroServiceResponseType{
 

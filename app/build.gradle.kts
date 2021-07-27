@@ -42,12 +42,21 @@ android {
         exclude("META-INF/AL2.0")
         exclude("META-INF/LGPL2.1")
     }
+
+    // Must add to get access to Fakes in :hero:hero-interactors/test
+//    sourceSets["test"].java {
+//        srcDir(project(Modules.heroInteractors).file("src/test/java"))
+//    }
+//    sourceSets[project(Modules.heroInteractors).file("src/test/java").path].java {
+//        srcDir(project(Modules.app).file("src/androidTest/java"))
+//    }
 }
 
 dependencies{
 
     implementation(project(Modules.core))
     implementation(project(Modules.heroDataSource))
+    implementation(project(Modules.heroDataSourceTest))
     implementation(project(Modules.heroDomain))
     implementation(project(Modules.heroInteractors))
 
@@ -77,6 +86,7 @@ dependencies{
 
     implementation(SqlDelight.androidDriver)
 
+    androidTestImplementation(project(Modules.heroDataSourceTest))
     androidTestImplementation(AndroidXTest.runner)
     androidTestImplementation(ComposeTest.uiTestJunit4)
     debugImplementation(ComposeTest.uiTestManifest)

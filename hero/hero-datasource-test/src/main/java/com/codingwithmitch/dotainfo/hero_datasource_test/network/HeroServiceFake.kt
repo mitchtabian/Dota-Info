@@ -1,9 +1,9 @@
-package com.codingwithmitch.dotainfo.hero_interactors.datasource.network
+package com.codingwithmitch.dotainfo.hero_datasource_test.network
 
 import com.codingwithmitch.dotainfo.hero_datasource.network.HeroServiceImpl
-import com.codingwithmitch.dotainfo.hero_interactors.datasource.network.data.HeroDataEmpty
-import com.codingwithmitch.dotainfo.hero_interactors.datasource.network.data.HeroDataMalformed
-import com.codingwithmitch.dotainfo.hero_interactors.datasource.network.data.HeroDataValid
+import com.codingwithmitch.dotainfo.hero_datasource_test.network.data.HeroDataEmpty
+import com.codingwithmitch.dotainfo.hero_datasource_test.network.data.HeroDataMalformed
+import com.codingwithmitch.dotainfo.hero_datasource_test.network.data.HeroDataValid
 import io.ktor.client.*
 import io.ktor.client.engine.mock.*
 import io.ktor.client.features.json.*
