@@ -1,8 +1,7 @@
-package com.codingwithmitch.dotainfo.ui.heroList
+package com.codingwithmitch.dotainfo.ui.heroDetail
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.remember
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
@@ -11,17 +10,17 @@ import coil.ImageLoader
 import com.codingwithmitch.dotainfo.coil.FakeImageLoader
 import com.codingwithmitch.dotainfo.data.Heros
 import com.codingwithmitch.dotainfo.ui.theme.DotaInfoTheme
-import com.codingwithmitch.ui_herolist.ui.HeroList
-import com.codingwithmitch.ui_herolist.ui.HeroListState
+import com.codingwithmitch.ui_herodetail.ui.HeroDetail
+import com.codingwithmitch.ui_herodetail.ui.HeroDetailState
 import org.junit.Rule
 import org.junit.Test
+import kotlin.random.Random
 
 /**
- * Demo isolation test for HeroList screen.
+ * Demo isolation test for HeroDetail screen.
  */
 @ExperimentalAnimationApi
-@ExperimentalComposeUiApi
-class HeroListTest {
+class HeroDetailTest {
 
     @get:Rule
     val composeTestRule = createComposeRule()
@@ -31,29 +30,37 @@ class HeroListTest {
     private val heroData = Heros.serializeHeroData(Heros.heroJsonData)
 
     @Test
-    fun areHerosShown() {
+    fun isHeroDataShown() {
+        // choose a hero at random
+        val hero = heroData.get(Random.nextInt(0, heroData.size - 1))
         composeTestRule.setContent {
             DotaInfoTheme() {
                 val state = remember{
-                    HeroListState(
-                        heros = heroData,
-                        filteredHeros = heroData,
+                    HeroDetailState(
+                        hero = hero,
                     )
                 }
-                HeroList(
+                HeroDetail(
                     state = state,
                     events = {},
-                    navigateToDetailScreen = {},
                     imageLoader = imageLoader,
                 )
             }
         }
-        composeTestRule.onNodeWithText("Anti-Mage").assertIsDisplayed()
-        composeTestRule.onNodeWithText("Axe").assertIsDisplayed()
-        composeTestRule.onNodeWithText("Bane").assertIsDisplayed()
+        composeTestRule.onNodeWithText(hero.localizedName).assertIsDisplayed()
+        composeTestRule.onNodeWithText(hero.primaryAttribute.uiValue).assertIsDisplayed()
+        composeTestRule.onNodeWithText(hero.attackType.uiValue).assertIsDisplayed()
+
+        val proWinPercentage = (hero.proWins.toDouble() / hero.proPick.toDouble() * 100).toInt()
+        composeTestRule.onNodeWithText("$proWinPercentage %")
+
+        val turboWinPercentage = (hero.turboWins.toDouble() / hero.turboPicks.toDouble() * 100).toInt()
+        composeTestRule.onNodeWithText("$turboWinPercentage %")
     }
 
 }
+
+
 
 
 
