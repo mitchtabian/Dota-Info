@@ -1,5 +1,6 @@
-package com.codingwithmitch.dotainfo.hero_datasource.cache
+package com.codingwithmitch.dotainfo.hero_interactors.datasource.cache
 
+import com.codingwithmitch.dotainfo.hero_datasource.cache.HeroCache
 import com.codingwithmitch.dotainfo.hero_domain.Hero
 import com.codingwithmitch.dotainfo.hero_domain.HeroRole
 

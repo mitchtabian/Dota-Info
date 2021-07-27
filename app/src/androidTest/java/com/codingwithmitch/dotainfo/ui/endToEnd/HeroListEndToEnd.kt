@@ -10,7 +10,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.test.platform.app.InstrumentationRegistry
 import coil.ImageLoader
 import com.codingwithmitch.dotainfo.coil.FakeImageLoader
-import com.codingwithmitch.dotainfo.data.Heros
+import com.codingwithmitch.dotainfo.hero_interactors.datasource.network.data.HeroDataValid
 import com.codingwithmitch.dotainfo.ui.MainActivity
 import com.codingwithmitch.dotainfo.ui.addHeroDetail
 import com.codingwithmitch.dotainfo.ui.addHeroList
@@ -35,7 +35,7 @@ class HeroListEndToEnd {
 
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
     private val imageLoader: ImageLoader = FakeImageLoader.build(context)
-    private val heroData = Heros.serializeHeroData(Heros.heroJsonData)
+    private val heroData = HeroDataValid.serializeHeroData(HeroDataValid.data)
 
     @Before
     fun before(){

@@ -9,7 +9,8 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.test.platform.app.InstrumentationRegistry
 import coil.ImageLoader
 import com.codingwithmitch.dotainfo.coil.FakeImageLoader
-import com.codingwithmitch.dotainfo.data.Heros
+import com.codingwithmitch.dotainfo.hero_interactors.datasource.network.data.HeroDataValid
+import com.codingwithmitch.dotainfo.hero_interactors.datasource.network.serializeHeroData
 import com.codingwithmitch.dotainfo.ui.theme.DotaInfoTheme
 import com.codingwithmitch.ui_herolist.ui.HeroList
 import com.codingwithmitch.ui_herolist.ui.HeroListState
@@ -28,7 +29,7 @@ class HeroListTest {
 
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
     private val imageLoader: ImageLoader = FakeImageLoader.build(context)
-    private val heroData = Heros.serializeHeroData(Heros.heroJsonData)
+    private val heroData = serializeHeroData(HeroDataValid.data)
 
     @Test
     fun areHerosShown() {

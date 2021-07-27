@@ -1,6 +1,5 @@
 // build.gradle for android libraries that contain UI
 
-
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
