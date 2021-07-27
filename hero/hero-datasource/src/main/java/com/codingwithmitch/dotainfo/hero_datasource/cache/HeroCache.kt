@@ -5,7 +5,7 @@ import com.squareup.sqldelight.db.SqlDriver
 
 interface HeroCache {
 
-    suspend fun getHero(id: Int): Hero
+    suspend fun getHero(id: Int): Hero?
 
     suspend fun selectAll(): List<Hero>
 
