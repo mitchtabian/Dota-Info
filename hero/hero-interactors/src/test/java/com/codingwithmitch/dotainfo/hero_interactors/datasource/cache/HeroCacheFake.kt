@@ -17,26 +17,36 @@ class HeroCacheFake(
     }
 
     override suspend fun insert(hero: Hero) {
-        var didInsert = false
-        for(h in db.heros){
-            if(h.id == hero.id){
-                db.heros.remove(h)
+        if(db.heros.isNotEmpty()){
+            var didInsert = false
+            for(h in db.heros){
+                if(h.id == hero.id){
+                    db.heros.remove(h)
+                    db.heros.add(hero)
+                    didInsert = true
+                    break
+                }
+            }
+            if(!didInsert){
                 db.heros.add(hero)
-                didInsert = true
-                break
             }
         }
-        if(!didInsert){
+        else{
             db.heros.add(hero)
         }
     }
 
     override suspend fun insert(heros: List<Hero>) {
-        for(hero in heros){
-            if(db.heros.contains(hero)){
-                db.heros.remove(hero)
-                db.heros.add(hero)
+        if(db.heros.isNotEmpty()){
+            for(hero in heros){
+                if(db.heros.contains(hero)){
+                    db.heros.remove(hero)
+                    db.heros.add(hero)
+                }
             }
+        }
+        else{
+            db.heros.addAll(heros)
         }
     }
 

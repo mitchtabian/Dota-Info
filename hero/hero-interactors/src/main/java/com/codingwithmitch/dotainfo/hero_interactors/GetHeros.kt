@@ -27,6 +27,13 @@ class GetHeros(
             val heros: List<Hero> = try { // catch network exceptions
                 service.getHeroStats()
             }catch (e: Exception){
+                e.printStackTrace() // log to crashlytics?
+                emit(DataState.Response<List<Hero>>(
+                    uiComponent = UIComponent.Dialog(
+                        title = "Network Data Error",
+                        description = e.message?: "Unknown error"
+                    )
+                ))
                 listOf()
             }
 
