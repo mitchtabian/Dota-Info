@@ -47,7 +47,6 @@ dependencies{
 
     implementation AndroidX.coreKtx
     implementation AndroidX.appCompat
-    implementation AndroidX.lifecycleRuntime
     implementation AndroidX.lifecycleVmKtx
 
     implementation Compose.activity

@@ -2,7 +2,7 @@ object Compose {
     private const val activityComposeVersion = "1.3.0-rc01"
     const val activity = "androidx.activity:activity-compose:$activityComposeVersion"
 
-    const val composeVersion = "1.0.0-rc01"
+    const val composeVersion = "1.0.0"
     const val ui = "androidx.compose.ui:ui:$composeVersion"
     const val material = "androidx.compose.material:material:$composeVersion"
     const val tooling = "androidx.compose.ui:ui-tooling:$composeVersion"
@@ -12,9 +12,6 @@ object Compose {
 
     private const val hiltNavigationComposeVersion = "1.0.0-alpha03"
     const val hiltNavigation = "androidx.hilt:hilt-navigation-compose:$hiltNavigationComposeVersion"
-
-    private const val constraintLayoutVersion = "1.0.0-alpha08"
-    const val constraintLayout = "androidx.constraintlayout:constraintlayout-compose:$constraintLayoutVersion"
 }
 
 object ComposeTest {
