@@ -30,7 +30,7 @@ I wrote unit tests for every use-case.
 1. [FilterHerosTest.kt](hero/hero-interactors/src/test/java/com/codingwithmitch/dotainfo/hero_interactors/FilterHerosTest.kt)
 
 ### Compose UI Tests
-Coming soon.
+[UI Tests](/app/src/androidTest/java/com/codingwithmitch/dotainfo/ui)
 
 # build.gradle files
 There are 3 types of build.gradle files.
