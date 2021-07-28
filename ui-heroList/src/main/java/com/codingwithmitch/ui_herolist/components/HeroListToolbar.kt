@@ -16,10 +16,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.codingwithmitch.ui_herolist.ui.test.TAG_HERO_FILTER_BTN
+import com.codingwithmitch.ui_herolist.ui.test.TAG_HERO_SEARCH_BAR
 
 @ExperimentalComposeUiApi
 @Composable
@@ -44,6 +47,7 @@ fun HeroListToolbar(
                 modifier = Modifier
                     .fillMaxWidth(.9f)
                     .padding(8.dp)
+                    .testTag(TAG_HERO_SEARCH_BAR)
                 ,
                 value = heroName,
                 onValueChange = {
@@ -75,6 +79,7 @@ fun HeroListToolbar(
                 Icon(
                     modifier = Modifier
                         .padding(8.dp)
+                        .testTag(TAG_HERO_FILTER_BTN)
                     ,
                     imageVector = Icons.Filled.MoreVert,
                     contentDescription = "Filter Icon"

@@ -13,12 +13,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.codingwithmitch.core.domain.FilterOrder
 import com.codingwithmitch.dotainfo.hero_domain.HeroAttribute
 import com.codingwithmitch.dotainfo.hero_domain.HeroFilter
 import com.codingwithmitch.ui_herolist.R
+import com.codingwithmitch.ui_herolist.ui.test.*
 
 @ExperimentalAnimationApi
 @Composable
@@ -31,7 +33,9 @@ fun HeroListFilter(
 ){
     AlertDialog(
         modifier = Modifier
-            .padding(16.dp),
+            .padding(16.dp)
+            .testTag(TAG_HERO_FILTER_DIALOG)
+        ,
         onDismissRequest = {
             onCloseDialog()
         },
@@ -143,6 +147,7 @@ fun HeroListFilter(
                 Row( // make the icon larger so it's easier to click
                     modifier = Modifier
                         .align(Alignment.End)
+                        .testTag(TAG_HERO_FILTER_DIALOG_DONE)
                         .clickable {
                             onCloseDialog()
                         }
@@ -240,6 +245,7 @@ fun ProWinsFilterSelector(
             modifier = Modifier
                 .padding(bottom = 12.dp)
                 .fillMaxWidth()
+                .testTag(TAG_HERO_FILTER_PROWINS_CHECKBOX)
                 .clickable(
                     interactionSource = MutableInteractionSource(),
                     indication = null, // disable the highlight
@@ -307,6 +313,7 @@ fun HeroFilterSelector(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 12.dp)
+                .testTag(TAG_HERO_FILTER_HERO_CHECKBOX)
                 .clickable(
                     interactionSource = MutableInteractionSource(),
                     indication = null, // disable the highlight
@@ -374,6 +381,7 @@ fun PrimaryAttrSelector(
         modifier = Modifier
             .fillMaxWidth()
             .padding(start = 24.dp, bottom = 8.dp)
+            .testTag(TAG_HERO_FILTER_STENGTH_CHECKBOX)
             .clickable(
                 interactionSource = MutableInteractionSource(),
                 indication = null, // disable the highlight
@@ -405,6 +413,7 @@ fun PrimaryAttrSelector(
         modifier = Modifier
             .fillMaxWidth()
             .padding(start = 24.dp, bottom = 8.dp)
+            .testTag(TAG_HERO_FILTER_AGILITY_CHECKBOX)
             .clickable(
                 interactionSource = MutableInteractionSource(),
                 indication = null, // disable the highlight
@@ -436,6 +445,7 @@ fun PrimaryAttrSelector(
         modifier = Modifier
             .fillMaxWidth()
             .padding(start = 24.dp, bottom = 8.dp)
+            .testTag(TAG_HERO_FILTER_INT_CHECKBOX)
             .clickable(
                 interactionSource = MutableInteractionSource(),
                 indication = null, // disable the highlight
@@ -467,6 +477,7 @@ fun PrimaryAttrSelector(
         modifier = Modifier
             .fillMaxWidth()
             .padding(start = 24.dp, bottom = 8.dp)
+            .testTag(TAG_HERO_FILTER_UNKNOWN_CHECKBOX)
             .clickable(
                 interactionSource = MutableInteractionSource(),
                 indication = null, // disable the highlight
@@ -520,6 +531,7 @@ fun OrderSelector(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(start = 24.dp, bottom = 8.dp)
+                .testTag(TAG_HERO_FILTER_DESC)
                 .clickable(
                     interactionSource = MutableInteractionSource(),
                     indication = null, // disable the highlight
@@ -568,6 +580,7 @@ fun OrderSelector(
             Checkbox(
                 modifier = Modifier
                     .padding(end = 8.dp)
+                    .testTag(TAG_HERO_FILTER_ASC)
                     .align(Alignment.CenterVertically)
                 ,
                 enabled= isEnabled,

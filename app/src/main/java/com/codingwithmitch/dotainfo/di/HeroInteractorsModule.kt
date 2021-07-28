@@ -17,7 +17,7 @@ object HeroInteractorsModule {
 
     @Provides
     @Singleton
-    @Named("heroAndroidSqlDriver") // in case you had another db
+    @Named("heroAndroidSqlDriver") // in case you had another SQL Delight db
     fun provideAndroidDriver(app: Application): SqlDriver {
        return AndroidSqliteDriver(
            schema = HeroInteractors.schema(),

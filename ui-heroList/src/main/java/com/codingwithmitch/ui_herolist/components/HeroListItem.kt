@@ -14,11 +14,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.ImageLoader
 import coil.compose.rememberImagePainter
 import com.codingwithmitch.dotainfo.hero_domain.Hero
+import com.codingwithmitch.ui_herolist.ui.test.TAG_HERO_NAME
+import com.codingwithmitch.ui_herolist.ui.test.TAG_HERO_PRIMARY_ATTRIBUTE
 import kotlin.math.round
 
 @ExperimentalAnimationApi
@@ -69,6 +72,7 @@ fun HeroListItem(
                 Text(
                     modifier = Modifier
                         .padding(bottom = 4.dp)
+                        .testTag(TAG_HERO_NAME)
                     ,
                     text = hero.localizedName,
                     style = MaterialTheme.typography.h4,
@@ -76,6 +80,9 @@ fun HeroListItem(
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
+                    modifier = Modifier
+                        .testTag(TAG_HERO_PRIMARY_ATTRIBUTE)
+                    ,
                     text = hero.primaryAttribute.uiValue,
                     style = MaterialTheme.typography.subtitle1,
                 )
