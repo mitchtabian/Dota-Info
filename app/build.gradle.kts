@@ -4,16 +4,16 @@ plugins {
 }
 
 android {
-    compileSdk = 30
-    buildToolsVersion = "30.0.3"
+    compileSdk = Android.compileSdk
+    buildToolsVersion = Android.buildTools
 
     defaultConfig {
-        applicationId = "com.codingwithmitch.dotainfo"
-        minSdk = 21
-        targetSdk = 30
-        versionCode = 1
-        versionName = "1.0"
-        testInstrumentationRunner =  "androidx.test.runner.AndroidJUnitRunner"
+        applicationId = Android.appId
+        minSdk = Android.minSdk
+        targetSdk = Android.targetSdk
+        versionCode = Android.versionCode
+        versionName = Android.versionName
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -21,32 +21,39 @@ android {
             isMinifyEnabled = false
         }
     }
+    buildFeatures {
+        compose = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-    buildFeatures {
-        compose = true
-        viewBinding = true
+    kotlinOptions {
+        jvmTarget = "1.8"
+        useIR = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.0.0"
+        kotlinCompilerExtensionVersion = Compose.composeVersion
+    }
+    packagingOptions {
+        exclude("META-INF/AL2.0")
+        exclude("META-INF/LGPL2.1")
     }
 }
 
 dependencies{
-    implementation("androidx.core:core-ktx:1.6.0")
-    implementation("androidx.appcompat:appcompat:1.3.0")
-    implementation("com.google.android.material:material:1.3.0")
+    implementation(AndroidX.coreKtx)
+    implementation(AndroidX.appCompat)
+    implementation(AndroidX.lifecycleVmKtx)
 
-    implementation("androidx.activity:activity-compose:1.3.0")
+    implementation(Compose.activity)
+    implementation(Compose.ui)
+    implementation(Compose.material)
+    implementation(Compose.tooling)
+    implementation(Compose.navigation)
+    implementation(Compose.hiltNavigation)
 
-    implementation("androidx.compose.foundation:foundation:1.0.0")
-    implementation("androidx.compose.foundation:foundation-layout:1.0.0")
-    implementation("androidx.compose.material:material:1.0.0")
-    implementation("androidx.compose.runtime:runtime:1.0.0")
-    implementation("androidx.compose.ui:ui-tooling:1.0.0")
-
+    implementation(Google.material)
 }
 
 
