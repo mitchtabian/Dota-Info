@@ -1,22 +1,19 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
-    kotlin(KotlinPlugins.serialization) version Kotlin.version
 }
 
 android {
-    compileSdk = Android.compileSdk
-    buildToolsVersion = Android.buildTools
+    compileSdk = 30
+    buildToolsVersion = "30.0.3"
 
     defaultConfig {
-        applicationId = Android.appId
-        minSdk = Android.minSdk
-        targetSdk = Android.targetSdk
-        versionCode = Android.versionCode
-        versionName = Android.versionName
-        testInstrumentationRunner = "com.codingwithmitch.dotainfo.CustomTestRunner"
+        applicationId = "com.codingwithmitch.dotainfo"
+        minSdk = 21
+        targetSdk = 30
+        versionCode = 1
+        versionName = "1.0"
+        testInstrumentationRunner =  "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -24,66 +21,32 @@ android {
             isMinifyEnabled = false
         }
     }
-    buildFeatures {
-        compose = true
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
-        useIR = true
+    buildFeatures {
+        compose = true
+        viewBinding = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Compose.composeVersion
-    }
-    packagingOptions {
-        exclude("META-INF/AL2.0")
-        exclude("META-INF/LGPL2.1")
+        kotlinCompilerExtensionVersion = "1.0.0"
     }
 }
 
 dependencies{
+    implementation("androidx.core:core-ktx:1.6.0")
+    implementation("androidx.appcompat:appcompat:1.3.0")
+    implementation("com.google.android.material:material:1.3.0")
 
-    implementation(project(Modules.core))
-    implementation(project(Modules.heroDataSource))
-    implementation(project(Modules.heroDomain))
-    implementation(project(Modules.heroInteractors))
+    implementation("androidx.activity:activity-compose:1.3.0")
 
-    implementation(project(Modules.ui_heroDetail))
-    implementation(project(Modules.ui_heroList))
+    implementation("androidx.compose.foundation:foundation:1.0.0")
+    implementation("androidx.compose.foundation:foundation-layout:1.0.0")
+    implementation("androidx.compose.material:material:1.0.0")
+    implementation("androidx.compose.runtime:runtime:1.0.0")
+    implementation("androidx.compose.ui:ui-tooling:1.0.0")
 
-    implementation(Coil.coil)
-
-    implementation(AndroidX.coreKtx)
-    implementation(AndroidX.appCompat)
-    implementation(AndroidX.lifecycleVmKtx)
-
-    implementation(Compose.activity)
-    implementation(Compose.ui)
-    implementation(Compose.material)
-    implementation(Compose.tooling)
-    implementation(Compose.navigation)
-    implementation(Compose.hiltNavigation)
-
-    implementation(Google.material)
-
-    implementation(Hilt.android)
-    kapt(Hilt.compiler)
-
-    implementation(Kotlinx.serialization)
-    implementation(Ktor.core)
-
-    implementation(SqlDelight.androidDriver)
-
-    androidTestImplementation(project(Modules.heroDataSourceTest))
-    androidTestImplementation(AndroidXTest.runner)
-    androidTestImplementation(ComposeTest.uiTestJunit4)
-    debugImplementation(ComposeTest.uiTestManifest)
-    androidTestImplementation(HiltTest.hiltAndroidTesting)
-    kaptAndroidTest(Hilt.compiler)
-    androidTestImplementation(Junit.junit4)
 }
 
 
