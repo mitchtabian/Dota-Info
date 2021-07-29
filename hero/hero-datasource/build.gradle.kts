@@ -21,7 +21,7 @@ dependencies {
 
 sqldelight {
     database("HeroDatabase") {
-        packageName = "com.codingwithmitch.dotainfo.hero_datasource.cache"
+        packageName = "com.codingwithmitch.hero_datasource.cache"
         sourceFolders = listOf("sqldelight")
     }
 }

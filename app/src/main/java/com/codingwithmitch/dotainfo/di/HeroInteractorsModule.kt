@@ -1,7 +1,7 @@
 package com.codingwithmitch.dotainfo.di
 
 import android.app.Application
-import com.codingwithmitch.dotainfo.hero_interactors.HeroInteractors
+import com.codingwithmitch.hero_interactors.HeroInteractors
 import com.squareup.sqldelight.android.AndroidSqliteDriver
 import com.squareup.sqldelight.db.SqlDriver
 import dagger.Module

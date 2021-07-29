@@ -8,8 +8,8 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.test.platform.app.InstrumentationRegistry
 import coil.ImageLoader
 import com.codingwithmitch.dotainfo.coil.FakeImageLoader
-import com.codingwithmitch.dotainfo.hero_datasource_test.network.data.HeroDataValid
-import com.codingwithmitch.dotainfo.hero_datasource_test.network.serializeHeroData
+import com.codingwithmitch.hero_datasource_test.network.data.HeroDataValid
+import com.codingwithmitch.hero_datasource_test.network.serializeHeroData
 import com.codingwithmitch.dotainfo.ui.theme.DotaInfoTheme
 import com.codingwithmitch.ui_herodetail.ui.HeroDetail
 import com.codingwithmitch.ui_herodetail.ui.HeroDetailState
