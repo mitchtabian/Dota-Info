@@ -9,7 +9,6 @@ plugins {
 }
 
 dependencies {
-    "implementation"(project(Modules.core))
     "implementation"(project(Modules.heroDomain))
 
     "implementation"(Ktor.core)
