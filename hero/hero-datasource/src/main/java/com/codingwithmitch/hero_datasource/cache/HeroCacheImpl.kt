@@ -88,9 +88,7 @@ class HeroCacheImpl(
 
     override suspend fun insert(heros: List<Hero>) {
         for(hero in heros){
-            try {
-                insert(hero)
-            }catch (e: Exception){
+            try { insert(hero) }catch (e: Exception){
                 e.printStackTrace()
                 // if one has an error just continue with others
             }
