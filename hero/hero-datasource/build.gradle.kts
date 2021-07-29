@@ -1,9 +1,7 @@
-plugins {
-    id 'java-library'
-    id 'kotlin'
+apply {
+    from("$rootDir/library-build.gradle")
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+
+dependencies {
 }
