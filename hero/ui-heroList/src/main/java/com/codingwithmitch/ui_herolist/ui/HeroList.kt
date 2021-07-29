@@ -8,6 +8,7 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import coil.ImageLoader
 import com.codingwithmitch.core.domain.ProgressBarState
 import com.codingwithmitch.ui_herolist.components.HeroListItem
 import com.codingwithmitch.ui_herolist.ui.HeroListState
@@ -15,6 +16,7 @@ import com.codingwithmitch.ui_herolist.ui.HeroListState
 @Composable
 fun HeroList(
     state: HeroListState,
+    imageLoader: ImageLoader,
 ){
     Box(
         modifier = Modifier.fillMaxSize()
@@ -26,7 +28,8 @@ fun HeroList(
             items(state.heros){ hero ->
                 HeroListItem(
                     hero = hero,
-                    onSelectHero = {}
+                    onSelectHero = {},
+                    imageLoader = imageLoader,
                 )
             }
         }
