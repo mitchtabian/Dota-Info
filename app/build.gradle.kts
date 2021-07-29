@@ -58,6 +58,8 @@ dependencies{
     implementation(Compose.hiltNavigation)
 
     implementation(Google.material)
+
+    implementation(SqlDelight.androidDriver)
 }
 
 
