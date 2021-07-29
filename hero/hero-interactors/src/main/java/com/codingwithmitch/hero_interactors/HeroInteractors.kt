@@ -25,13 +25,9 @@ data class HeroInteractors(
             )
         }
 
-        fun schema(): SqlDriver.Schema {
-            return HeroCache.schema()
-        }
+        val schema: SqlDriver.Schema = HeroCache.schema
 
-        fun dbName(): String {
-            return HeroCache.dbName()
-        }
+        val dbName: String = HeroCache.dbName
     }
 }
 

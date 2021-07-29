@@ -20,9 +20,9 @@ object HeroInteractorsModule {
     @Named("heroAndroidSqlDriver") // in case you had another SQL Delight db
     fun provideAndroidDriver(app: Application): SqlDriver {
        return AndroidSqliteDriver(
-           schema = HeroInteractors.schema(),
+           schema = HeroInteractors.schema,
            context = app,
-           name = HeroInteractors.dbName()
+           name = HeroInteractors.dbName
        )
     }
 
