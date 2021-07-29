@@ -1,0 +1,160 @@
+CREATE TABLE  hero_Entity(
+    id INTEGER NOT NULL PRIMARY KEY,
+    localizedName TEXT NOT NULL,
+    primaryAttribute TEXT NOT NULL,
+    attackType TEXT NOT NULL,
+
+    -- Instead of doing comma separated strings I decided to make the roles booleans.
+    -- If they contain a particular role then '1'. Otherwise '0'.
+    roleCarry INTEGER DEFAULT 0, -- 0 == false
+    roleEscape INTEGER DEFAULT 0,
+    roleNuker INTEGER DEFAULT 0,
+    roleInitiator INTEGER DEFAULT 0,
+    roleDurable INTEGER DEFAULT 0,
+    roleDisabler INTEGER DEFAULT 0,
+    roleJungler INTEGER DEFAULT 0,
+    roleSupport INTEGER DEFAULT 0,
+    rolePusher INTEGER DEFAULT 0,
+    -- end roles
+
+    img TEXT NOT NULL,
+    icon TEXT NOT NULL,
+    baseHealth REAL NOT NULL,
+    baseHealthRegen REAL,
+    baseMana REAL NOT NULL,
+    baseManaRegen REAL,
+    baseArmor REAL NOT NULL,
+    baseMoveRate REAL NOT NULL,
+    baseAttackMin REAL NOT NULL,
+    baseAttackMax REAL NOT NULL,
+    baseStr INTEGER NOT NULL,
+    baseAgi INTEGER NOT NULL,
+    baseInt INTEGER NOT NULL,
+    strGain REAL NOT NULL,
+    agiGain REAL NOT NULL,
+    intGain REAL NOT NULL,
+    attackRange INTEGER NOT NULL,
+    projectileSpeed INTEGER NOT NULL,
+    attackRate REAL NOT NULL,
+    moveSpeed INTEGER NOT NULL,
+    turnRate REAL,
+    legs INTEGER NOT NULL,
+    turboPicks INTEGER NOT NULL,
+    turboWins INTEGER NOT NULL,
+    proWins INTEGER NOT NULL,
+    proPick INTEGER NOT NULL,
+    firstPick INTEGER NOT NULL,
+    firstWin INTEGER NOT NULL,
+    secondPick INTEGER NOT NULL,
+    secondWin INTEGER NOT NULL,
+    thirdPick INTEGER NOT NULL,
+    thirdWin INTEGER NOT NULL,
+    fourthPick INTEGER NOT NULL,
+    fourthWin INTEGER NOT NULL,
+    fifthPick INTEGER NOT NULL,
+    fifthWin INTEGER NOT NULL,
+    sixthPick INTEGER NOT NULL,
+    sixthWin INTEGER NOT NULL,
+    seventhPick INTEGER NOT NULL,
+    seventhWin INTEGER NOT NULL,
+    eighthPick INTEGER NOT NULL,
+    eighthWin INTEGER NOT NULL
+);
+
+selectAll:
+SELECT *
+FROM hero_Entity;
+
+insertHero:
+INSERT OR REPLACE
+INTO hero_Entity (
+    id,
+    localizedName,
+    primaryAttribute,
+    attackType,
+    roleCarry,
+    roleEscape,
+    roleNuker,
+    roleInitiator,
+    roleDurable,
+    roleDisabler,
+    roleJungler,
+    roleSupport,
+    rolePusher,
+    img,
+    icon,
+    baseHealth,
+    baseHealthRegen ,
+    baseMana,
+    baseManaRegen ,
+    baseArmor,
+    baseMoveRate,
+    baseAttackMin,
+    baseAttackMax,
+    baseStr,
+    baseAgi,
+    baseInt,
+    strGain,
+    agiGain,
+    intGain,
+    attackRange,
+    projectileSpeed,
+    attackRate,
+    moveSpeed,
+    turnRate ,
+    legs,
+    turboPicks,
+    turboWins,
+    proWins,
+    proPick,
+    firstPick,
+    firstWin,
+    secondPick,
+    secondWin,
+    thirdPick,
+    thirdWin,
+    fourthPick,
+    fourthWin,
+    fifthPick,
+    fifthWin,
+    sixthPick,
+    sixthWin,
+    seventhPick,
+    seventhWin,
+    eighthPick,
+    eighthWin
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+
+searchHeroByName:
+SELECT * FROM hero_Entity
+WHERE localizedName LIKE ('%' || :query || '%');
+
+searchHeroByAttr:
+SELECT * FROM hero_Entity
+WHERE primaryAttribute = :primaryAttr;
+
+searchHeroByAttackType:
+SELECT * FROM hero_Entity
+WHERE attackType = :attackType;
+
+searchHeroByRole:
+SELECT * FROM hero_Entity
+WHERE roleCarry = :roleCarry
+AND roleEscape = :roleEscape
+AND roleNuker = :roleNuker
+AND roleInitiator = :roleInitiator
+AND roleDurable = :roleDurable
+AND roleDisabler = :roleDisabler
+AND roleJungler = :roleJungler
+AND roleSupport = :roleSupport
+AND rolePusher = :rolePusher
+;
+
+getHero:
+SELECT * FROM hero_Entity
+WHERE id = :id;
+
+removeHero:
+DELETE FROM hero_Entity
+WHERE id = :id;
