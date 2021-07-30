@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
@@ -104,10 +105,73 @@ fun HeroDetail(
                             hero = hero,
                             padding = 10.dp,
                         )
-                        // TODO(Hero Win %'s)
+                        Spacer(modifier = Modifier.height(12.dp))
+                        WinPercentages(hero = hero,)
                     }
                 }
             }
+        }
+    }
+}
+
+/**
+ * Displays Pro wins % and Turbo wins %
+ */
+@Composable
+fun WinPercentages(
+    hero: Hero,
+){
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+    ){
+        // Pro Win %
+        Column(
+            modifier = Modifier.fillMaxWidth(.5f),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ){
+            Text(
+                modifier = Modifier
+                    .padding(bottom = 8.dp)
+                    .align(Alignment.CenterHorizontally)
+                ,
+                text = "Pro Wins",
+                style = MaterialTheme.typography.h2,
+            )
+            val proWinPercentage = remember {round(hero.proWins.toDouble() / hero.proPick.toDouble() * 100).toInt()}
+            Text(
+                modifier = Modifier
+                    .padding(bottom = 8.dp)
+                    .align(Alignment.CenterHorizontally)
+                ,
+                text = "${proWinPercentage} %",
+                style = MaterialTheme.typography.h2,
+                color = if(proWinPercentage > 50) Color(0xFF009a34) else MaterialTheme.colors.error
+            )
+        }
+        // Turbo win %
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ){
+            Text(
+                modifier = Modifier
+                    .padding(bottom = 8.dp)
+                    .align(Alignment.CenterHorizontally)
+                ,
+                text = "Turbo Wins",
+                style = MaterialTheme.typography.h2,
+            )
+            val turboWinPercentage = remember {round(hero.turboWins.toDouble() / hero.turboPicks.toDouble() * 100).toInt()}
+            Text(
+                modifier = Modifier
+                    .padding(bottom = 8.dp)
+                    .align(Alignment.CenterHorizontally)
+                ,
+                text = "${turboWinPercentage} %",
+                style = MaterialTheme.typography.h2,
+                color = if(turboWinPercentage > 50) Color(0xFF009a34) else MaterialTheme.colors.error
+            )
         }
     }
 }
