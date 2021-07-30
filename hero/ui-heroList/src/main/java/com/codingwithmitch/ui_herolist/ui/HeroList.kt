@@ -17,9 +17,11 @@ import com.codingwithmitch.ui_herolist.ui.HeroListState
 fun HeroList(
     state: HeroListState,
     imageLoader: ImageLoader,
+    navigateToDetailScreen: (Int) -> Unit,
 ){
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
     ){
         LazyColumn(
             modifier = Modifier
@@ -28,7 +30,9 @@ fun HeroList(
             items(state.heros){ hero ->
                 HeroListItem(
                     hero = hero,
-                    onSelectHero = {},
+                    onSelectHero = { heroId ->
+                       navigateToDetailScreen(heroId)
+                    },
                     imageLoader = imageLoader,
                 )
             }
