@@ -13,17 +13,15 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
-
 @HiltViewModel
 class HeroListViewModel
 @Inject
 constructor(
     private val getHeros: GetHeros,
+    private val logger: Logger,
 ): ViewModel(){
 
     val state: MutableState<HeroListState> = mutableStateOf(HeroListState())
-
-    private val logger = Logger("HeroListViewModel")
 
     init {
         getHeros()
