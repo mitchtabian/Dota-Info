@@ -13,6 +13,7 @@ import coil.ImageLoader
 import com.codingwithmitch.dotainfo.ui.navigation.Screen
 import com.codingwithmitch.dotainfo.ui.theme.DotaInfoTheme
 import com.codingwithmitch.ui_herodetail.ui.HeroDetail
+import com.codingwithmitch.ui_herodetail.ui.HeroDetailViewModel
 import com.codingwithmitch.ui_herolist.HeroList
 import com.codingwithmitch.ui_herolist.ui.HeroListViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -68,7 +69,10 @@ fun NavGraphBuilder.addHeroDetail() {
         route = Screen.HeroDetail.route + "/{heroId}",
         arguments = Screen.HeroDetail.arguments,
     ){
-        HeroDetail(it.arguments?.get("heroId") as Int?)
+        val viewModel: HeroDetailViewModel = hiltViewModel()
+        HeroDetail(
+            state = viewModel.state.value
+        )
     }
 }
 
