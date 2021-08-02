@@ -23,7 +23,7 @@ Multi-module demo app that gets data from a Dota2 api.
 | [components](/components/)         | Android Library      | Common Composables.                                              |
 
 # Architecture
-<img src="/art/dotainfo_architecture.png" width="50%" height="50%" />
+<img src="/art/dotainfo_architecture.png" width="75%" height="75%" />
 
 
 # Tests
