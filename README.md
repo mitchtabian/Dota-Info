@@ -1,6 +1,14 @@
 # Work in progress
 Multi-module demo app that gets data from a Dota2 api.
 
+# List to Detail screen
+<img src="https://github.com/mitchtabian/Dota-Info/blob/master/art/demo1.gif" width="25%">
+
+# Filtering
+<img src="https://github.com/mitchtabian/Dota-Info/blob/master/art/demo2.gif" width="25%">
+
+# Module Design
+
 | Module name        | Type                 | Description                                                      |
 | -------------      | -------------        | -------------                                                    |
 | [app](/app/)                | Android Application  | MainActivity, BaseApplication, Theme, Hilt setup.                |
@@ -14,12 +22,9 @@ Multi-module demo app that gets data from a Dota2 api.
 | [constants](/constants/)          | Java/Kotlin Library  | Random constants.                                                |
 | [components](/components/)         | Android Library      | Common Composables.                                              |
 
+# Architecture
+<img src="/art/dotainfo_architecture.png" width="50%" height="50%" />
 
-# List to Detail screen
-<img src="https://github.com/mitchtabian/Dota-Info/blob/master/art/demo1.gif" width="25%">
-
-# Filtering
-<img src="https://github.com/mitchtabian/Dota-Info/blob/master/art/demo2.gif" width="25%">
 
 # Tests
 
