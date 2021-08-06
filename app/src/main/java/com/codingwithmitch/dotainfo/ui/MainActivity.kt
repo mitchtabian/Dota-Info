@@ -4,8 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.*
+import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
@@ -35,20 +39,24 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             DotaInfoTheme {
-                val navController = rememberAnimatedNavController()
-                AnimatedNavHost(
-                    navController = navController,
-                    startDestination = Screen.HeroList.route,
-                    builder = {
-                        addHeroList(
-                            navController = navController,
-                            imageLoader = imageLoader
-                        )
-                        addHeroDetail(
-                            imageLoader = imageLoader
-                        )
-                    }
-                )
+                BoxWithConstraints {
+                    val navController = rememberAnimatedNavController()
+                    AnimatedNavHost(
+                        navController = navController,
+                        startDestination = Screen.HeroList.route,
+                        builder = {
+                            addHeroList(
+                                navController = navController,
+                                imageLoader = imageLoader,
+                                width = constraints.maxWidth / 2,
+                            )
+                            addHeroDetail(
+                                imageLoader = imageLoader,
+                                width = constraints.maxWidth / 2,
+                            )
+                        }
+                    )
+                }
             }
         }
     }
@@ -59,19 +67,26 @@ class MainActivity : ComponentActivity() {
 fun NavGraphBuilder.addHeroList(
     navController: NavController,
     imageLoader: ImageLoader,
+    width: Int,
 ) {
     composable(
         route = Screen.HeroList.route,
         exitTransition = {_, _ ->
             slideOutHorizontally(
-                targetOffsetX = { -300 },
-                animationSpec = tween(300)
+                targetOffsetX = { -width },
+                animationSpec = tween(
+                    durationMillis = 300,
+                    easing = FastOutSlowInEasing
+                )
             ) + fadeOut(animationSpec = tween(300))
         },
         popEnterTransition = { initial, _ ->
             slideInHorizontally(
-                initialOffsetX = { -300 },
-                animationSpec = tween(300)
+                initialOffsetX = { -width },
+                animationSpec = tween(
+                    durationMillis = 300,
+                    easing = FastOutSlowInEasing
+                )
             ) + fadeIn(animationSpec = tween(300))
         },
     ){
@@ -90,20 +105,27 @@ fun NavGraphBuilder.addHeroList(
 @ExperimentalAnimationApi
 fun NavGraphBuilder.addHeroDetail(
     imageLoader: ImageLoader,
+    width: Int,
 ) {
     composable(
         route = Screen.HeroDetail.route + "/{heroId}",
         arguments = Screen.HeroDetail.arguments,
         enterTransition = { _, _ ->
             slideInHorizontally(
-                initialOffsetX = { 300 },
-                animationSpec = tween(300)
+                initialOffsetX = { width },
+                animationSpec = tween(
+                    durationMillis = 300,
+                    easing = FastOutSlowInEasing
+                )
             ) + fadeIn(animationSpec = tween(300))
         },
         popExitTransition = { _, target ->
             slideOutHorizontally(
-                targetOffsetX = { 300 },
-                animationSpec = tween(300)
+                targetOffsetX = { width },
+                animationSpec = tween(
+                    durationMillis = 300,
+                    easing = FastOutSlowInEasing
+                )
             ) + fadeOut(animationSpec = tween(300))
         }
     ){
