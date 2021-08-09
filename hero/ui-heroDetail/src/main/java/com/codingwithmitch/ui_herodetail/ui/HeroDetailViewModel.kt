@@ -6,6 +6,9 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.codingwithmitch.core.domain.DataState
+import com.codingwithmitch.core.domain.Queue
+import com.codingwithmitch.core.domain.UIComponent
+import com.codingwithmitch.core.util.Logger
 import com.codingwithmitch.hero_interactors.GetHeroFromCache
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
@@ -18,6 +21,7 @@ class HeroDetailViewModel
 constructor(
     private val getHeroFromCache: GetHeroFromCache,
     private val savedStateHandle: SavedStateHandle,
+    private val logger: Logger,
 ): ViewModel(){
 
     val state: MutableState<HeroDetailState> = mutableStateOf(HeroDetailState())
@@ -46,12 +50,23 @@ constructor(
                     state.value = state.value.copy(hero = dataState.data)
                 }
                 is DataState.Response -> {
-                    // TODO(Handle errors)
+                    if(dataState.uiComponent is UIComponent.None){
+                        logger.log("getHeroFromCache: ${(dataState.uiComponent as UIComponent.None).message}")
+                    }
+                    else{
+                        appendToMessageQueue(dataState.uiComponent)
+                    }
                 }
             }
         }.launchIn(viewModelScope)
     }
 
+    private fun appendToMessageQueue(uiComponent: UIComponent){
+        val queue = state.value.errorQueue
+        queue.add(uiComponent)
+        state.value = state.value.copy(errorQueue = Queue(mutableListOf())) // force recompose
+        state.value = state.value.copy(errorQueue = queue)
+    }
 }
 
 

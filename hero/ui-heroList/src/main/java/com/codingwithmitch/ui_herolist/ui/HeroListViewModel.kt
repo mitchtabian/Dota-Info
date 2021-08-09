@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.codingwithmitch.core.domain.DataState
+import com.codingwithmitch.core.domain.Queue
 import com.codingwithmitch.core.domain.UIComponent
 import com.codingwithmitch.core.util.Logger
 import com.codingwithmitch.hero_domain.HeroAttribute
@@ -82,13 +83,11 @@ constructor(
         getHeros.execute().onEach { dataState ->
             when(dataState){
                 is DataState.Response -> {
-                    when(dataState.uiComponent){
-                        is UIComponent.Dialog -> {
-                            logger.log((dataState.uiComponent as UIComponent.Dialog).description)
-                        }
-                        is UIComponent.None -> {
-                            logger.log((dataState.uiComponent as UIComponent.None).message)
-                        }
+                    if(dataState.uiComponent is UIComponent.None){
+                        logger.log("getHeros: ${(dataState.uiComponent as UIComponent.None).message}")
+                    }
+                    else{
+                        appendToMessageQueue(dataState.uiComponent)
                     }
                 }
                 is DataState.Data -> {
@@ -100,6 +99,13 @@ constructor(
                 }
             }
         }.launchIn(viewModelScope)
+    }
+
+    private fun appendToMessageQueue(uiComponent: UIComponent){
+        val queue = state.value.errorQueue
+        queue.add(uiComponent)
+        state.value = state.value.copy(errorQueue = Queue(mutableListOf())) // force recompose
+        state.value = state.value.copy(errorQueue = queue)
     }
 }
 
