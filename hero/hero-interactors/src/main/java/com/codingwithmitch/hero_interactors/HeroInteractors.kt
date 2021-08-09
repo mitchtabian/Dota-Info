@@ -8,7 +8,7 @@ import java.awt.Button
 data class HeroInteractors(
     val getHeros: GetHeros,
     val getHeroFromCache: GetHeroFromCache,
-    // TODO(Add other hero interactors)
+    val filterHeros: FilterHeros,
 ) {
     companion object Factory {
         fun build(sqlDriver: SqlDriver): HeroInteractors{
@@ -22,6 +22,7 @@ data class HeroInteractors(
                 getHeroFromCache = GetHeroFromCache(
                     cache = cache
                 ),
+                filterHeros = FilterHeros(),
             )
         }
 
