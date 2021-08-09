@@ -8,6 +8,7 @@ import com.codingwithmitch.core.domain.DataState
 import com.codingwithmitch.core.domain.UIComponent
 import com.codingwithmitch.core.util.Logger
 import com.codingwithmitch.hero_domain.Hero
+import com.codingwithmitch.hero_domain.HeroFilter
 import com.codingwithmitch.hero_interactors.FilterHeros
 import com.codingwithmitch.hero_interactors.GetHeros
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -38,6 +39,9 @@ constructor(
             is HeroListEvents.FilterHeros -> {
                 filterHeros()
             }
+            is HeroListEvents.UpdateHeroFilter -> {
+                updateHeroFilter(event.heroFilter)
+            }
             is HeroListEvents.UpdateHeroName -> {
                 updateHeroName(event.heroName)
             }
@@ -46,6 +50,11 @@ constructor(
 
     private fun updateHeroName(heroName: String) {
         state.value = state.value.copy(heroName = heroName)
+    }
+
+    private fun updateHeroFilter(heroFilter: HeroFilter){
+        state.value = state.value.copy(heroFilter = heroFilter)
+        filterHeros()
     }
 
     private fun filterHeros(){
