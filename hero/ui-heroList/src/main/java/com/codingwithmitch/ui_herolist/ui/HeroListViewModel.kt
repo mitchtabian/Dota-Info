@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.codingwithmitch.core.domain.DataState
 import com.codingwithmitch.core.domain.UIComponent
 import com.codingwithmitch.core.util.Logger
+import com.codingwithmitch.hero_domain.HeroAttribute
 import com.codingwithmitch.hero_domain.HeroFilter
 import com.codingwithmitch.hero_interactors.FilterHeros
 import com.codingwithmitch.hero_interactors.GetHeros
@@ -44,10 +45,18 @@ constructor(
             is HeroListEvents.UpdateHeroName -> {
                 updateHeroName(event.heroName)
             }
+            is HeroListEvents.UpdateAttributeFilter -> {
+                updateAttributeFilter(event.attribute)
+            }
             is HeroListEvents.UpdateFilterDialogState -> {
                 state.value = state.value.copy(filterDialogState = event.uiComponentState)
             }
         }
+    }
+
+    private fun updateAttributeFilter(attribute: HeroAttribute) {
+        state.value = state.value.copy(primaryAttrFilter = attribute)
+        filterHeros()
     }
 
     private fun updateHeroName(heroName: String) {
