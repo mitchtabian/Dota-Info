@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import coil.ImageLoader
+import com.codingwithmitch.components.DefaultScreenUI
 import com.codingwithmitch.core.domain.ProgressBarState
 import com.codingwithmitch.core.domain.UIComponentState
 import com.codingwithmitch.ui_herolist.components.HeroListFilter
@@ -29,59 +30,59 @@ fun HeroList(
     imageLoader: ImageLoader,
     navigateToDetailScreen: (Int) -> Unit,
 ){
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-    ){
-        Column {
-            HeroListToolbar(
-                heroName = state.heroName,
-                onHeroNameChanged = { heroName ->
-                    events(HeroListEvents.UpdateHeroName(heroName))
-                },
-                onExecuteSearch = {
-                    events(HeroListEvents.FilterHeros)
-                },
-                onShowFilterDialog = {
-                    events(HeroListEvents.UpdateFilterDialogState(UIComponentState.Show))
-                }
-            )
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-            ){
-                items(state.filteredHeros){ hero ->
-                    HeroListItem(
-                        hero = hero,
-                        onSelectHero = { heroId ->
-                            navigateToDetailScreen(heroId)
-                        },
-                        imageLoader = imageLoader,
-                    )
+    DefaultScreenUI(
+        progressBarState = state.progressBarState,
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+        ){
+            Column {
+                HeroListToolbar(
+                    heroName = state.heroName,
+                    onHeroNameChanged = { heroName ->
+                        events(HeroListEvents.UpdateHeroName(heroName))
+                    },
+                    onExecuteSearch = {
+                        events(HeroListEvents.FilterHeros)
+                    },
+                    onShowFilterDialog = {
+                        events(HeroListEvents.UpdateFilterDialogState(UIComponentState.Show))
+                    }
+                )
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize()
+                ){
+                    items(state.filteredHeros){ hero ->
+                        HeroListItem(
+                            hero = hero,
+                            onSelectHero = { heroId ->
+                                navigateToDetailScreen(heroId)
+                            },
+                            imageLoader = imageLoader,
+                        )
+                    }
                 }
             }
-        }
-        if(state.filterDialogState is UIComponentState.Show){
-            HeroListFilter(
-                heroFilter = state.heroFilter,
-                onUpdateHeroFilter = { heroFilter ->
-                    events(HeroListEvents.UpdateHeroFilter(heroFilter))
-                },
-                attributeFilter = state.primaryAttrFilter,
-                onUpdateAttributeFilter = { attribute ->
-                    events(HeroListEvents.UpdateAttributeFilter(attribute))
-                },
-                onCloseDialog = {
-                    events(HeroListEvents.UpdateFilterDialogState(UIComponentState.Hide))
-                }
-            )
-        }
-        if(state.progressBarState is ProgressBarState.Loading){
-            CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center)
-            )
+            if(state.filterDialogState is UIComponentState.Show){
+                HeroListFilter(
+                    heroFilter = state.heroFilter,
+                    onUpdateHeroFilter = { heroFilter ->
+                        events(HeroListEvents.UpdateHeroFilter(heroFilter))
+                    },
+                    attributeFilter = state.primaryAttrFilter,
+                    onUpdateAttributeFilter = { attribute ->
+                        events(HeroListEvents.UpdateAttributeFilter(attribute))
+                    },
+                    onCloseDialog = {
+                        events(HeroListEvents.UpdateFilterDialogState(UIComponentState.Hide))
+                    }
+                )
+            }
         }
     }
+
 }
 
 
