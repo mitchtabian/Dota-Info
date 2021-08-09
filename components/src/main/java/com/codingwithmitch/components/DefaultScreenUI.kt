@@ -3,6 +3,7 @@ package com.codingwithmitch.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
@@ -38,6 +39,9 @@ fun DefaultScreenUI(
                 queue.peek()?.let { uiComponent ->
                     if(uiComponent is UIComponent.Dialog){
                         GenericDialog(
+                            modifier = Modifier
+                                .fillMaxWidth(0.9f)
+                            ,
                             title = uiComponent.title,
                             description = uiComponent.description,
                             onRemoveHeadFromQueue = onRemoveHeadFromQueue
