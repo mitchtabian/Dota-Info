@@ -50,6 +50,8 @@ dependencies{
     implementation(project(Modules.ui_heroList))
     implementation(project(Modules.ui_heroDetail))
 
+    implementation(Accompanist.animations)
+
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.appCompat)
     implementation(AndroidX.lifecycleVmKtx)
