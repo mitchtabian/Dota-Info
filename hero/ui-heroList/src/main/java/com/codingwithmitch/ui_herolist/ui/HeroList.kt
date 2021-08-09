@@ -16,12 +16,14 @@ import coil.ImageLoader
 import com.codingwithmitch.core.domain.ProgressBarState
 import com.codingwithmitch.ui_herolist.components.HeroListItem
 import com.codingwithmitch.ui_herolist.components.HeroListToolbar
+import com.codingwithmitch.ui_herolist.ui.HeroListEvents
 import com.codingwithmitch.ui_herolist.ui.HeroListState
 
 @ExperimentalComposeUiApi
 @Composable
 fun HeroList(
     state: HeroListState,
+    events: (HeroListEvents) -> Unit,
     imageLoader: ImageLoader,
     navigateToDetailScreen: (Int) -> Unit,
 ){
@@ -30,14 +32,13 @@ fun HeroList(
             .fillMaxSize()
     ){
         Column {
-            val name = remember{ mutableStateOf("") }
             HeroListToolbar(
-                heroName = name.value,
+                heroName = state.heroName,
                 onHeroNameChanged = { heroName ->
-                    name.value = heroName
+                    events(HeroListEvents.UpdateHeroName(heroName))
                 },
                 onExecuteSearch = {
-
+                    events(HeroListEvents.FilterHeros)
                 },
                 onShowFilterDialog = {
 
@@ -47,7 +48,7 @@ fun HeroList(
                 modifier = Modifier
                     .fillMaxSize()
             ){
-                items(state.heros){ hero ->
+                items(state.filteredHeros){ hero ->
                     HeroListItem(
                         hero = hero,
                         onSelectHero = { heroId ->
