@@ -131,6 +131,7 @@ fun NavGraphBuilder.addHeroDetail(
         HeroDetail(
             state = viewModel.state.value,
             imageLoader = imageLoader,
+            events = viewModel::onTriggerEvent,
         )
     }
 }

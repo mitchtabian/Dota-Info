@@ -33,7 +33,7 @@ fun HeroList(
     DefaultScreenUI(
         queue = state.errorQueue,
         onRemoveHeadFromQueue = {
-            // TODO(remove head message)
+            events(HeroListEvents.OnRemoveHeadFromQueue)
         },
         progressBarState = state.progressBarState,
     ) {

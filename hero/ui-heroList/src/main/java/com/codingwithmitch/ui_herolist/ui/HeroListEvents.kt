@@ -26,4 +26,6 @@ sealed class HeroListEvents {
         val uiComponentState: UIComponentState
     ): HeroListEvents()
 
+    object OnRemoveHeadFromQueue: HeroListEvents()
+
 }

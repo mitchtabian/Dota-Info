@@ -30,6 +30,18 @@ constructor(
 
     init {
         onTriggerEvent(HeroListEvents.GetHeros)
+        appendToMessageQueue(
+            uiComponent = UIComponent.Dialog(
+                title = "test",
+                description = "just testing"
+            )
+        )
+        appendToMessageQueue(
+            uiComponent = UIComponent.Dialog(
+                title = "Testing again",
+                description = "I dunno just another test"
+            )
+        )
     }
 
     fun onTriggerEvent(event: HeroListEvents){
@@ -51,6 +63,9 @@ constructor(
             }
             is HeroListEvents.UpdateFilterDialogState -> {
                 state.value = state.value.copy(filterDialogState = event.uiComponentState)
+            }
+            is HeroListEvents.OnRemoveHeadFromQueue -> {
+                removeHeadMessage()
             }
         }
     }
@@ -106,6 +121,17 @@ constructor(
         queue.add(uiComponent)
         state.value = state.value.copy(errorQueue = Queue(mutableListOf())) // force recompose
         state.value = state.value.copy(errorQueue = queue)
+    }
+
+    private fun removeHeadMessage() {
+        try {
+            val queue = state.value.errorQueue
+            queue.remove() // can throw exception if empty
+            state.value = state.value.copy(errorQueue = Queue(mutableListOf())) // force recompose
+            state.value = state.value.copy(errorQueue = queue)
+        }catch (e: Exception){
+            logger.log("Nothing to remove from DialogQueue")
+        }
     }
 }
 

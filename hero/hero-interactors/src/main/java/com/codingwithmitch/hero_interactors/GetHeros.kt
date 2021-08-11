@@ -43,6 +43,7 @@ class GetHeros(
             val cachedHeros = cache.selectAll()
 
             emit(DataState.Data(cachedHeros))
+
         }catch (e: Exception){
             e.printStackTrace()
             emit(DataState.Response<List<Hero>>(
