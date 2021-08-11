@@ -4,12 +4,17 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.test.platform.app.InstrumentationRegistry
 import coil.ImageLoader
 import com.codingwithmitch.dotainfo.coil.FakeImageLoader
 import com.codingwithmitch.dotainfo.di.HeroInteractorsModule
+import com.codingwithmitch.dotainfo.ui.MainActivity
+import com.codingwithmitch.dotainfo.ui.navigation.Screen
+import com.codingwithmitch.dotainfo.ui.theme.DotaInfoTheme
 import com.codingwithmitch.hero_datasource.cache.HeroCache
 import com.codingwithmitch.hero_datasource.network.HeroService
 import com.codingwithmitch.hero_datasource_test.cache.HeroCacheFake
@@ -21,11 +26,10 @@ import com.codingwithmitch.hero_interactors.FilterHeros
 import com.codingwithmitch.hero_interactors.GetHeroFromCache
 import com.codingwithmitch.hero_interactors.GetHeros
 import com.codingwithmitch.hero_interactors.HeroInteractors
-import com.codingwithmitch.dotainfo.ui.MainActivity
-import com.codingwithmitch.dotainfo.ui.addHeroDetail
-import com.codingwithmitch.dotainfo.ui.addHeroList
-import com.codingwithmitch.dotainfo.ui.navigation.Screen
-import com.codingwithmitch.dotainfo.ui.theme.DotaInfoTheme
+import com.codingwithmitch.ui_herodetail.ui.HeroDetail
+import com.codingwithmitch.ui_herodetail.ui.HeroDetailViewModel
+import com.codingwithmitch.ui_herolist.ui.HeroList
+import com.codingwithmitch.ui_herolist.ui.HeroListViewModel
 import com.codingwithmitch.ui_herolist.ui.test.*
 import dagger.Module
 import dagger.Provides
@@ -40,6 +44,9 @@ import org.junit.Test
 import javax.inject.Singleton
 
 /**
+ * NOTE: These tests will fail with Accompanist Animations for navigation transitions.
+ * To get them to pass you can't use 'import com.google.accompanist.navigation.animation.composable'
+ *
  * End to end tests for the HeroList Screen.
  * Basically I tested all the things a user could do in this screen.
  * 1. Searching for a hero by name
@@ -103,22 +110,37 @@ class HeroListEndToEnd {
     fun before(){
         composeTestRule.setContent {
             DotaInfoTheme {
-                val navController = rememberNavController()
-                NavHost(
-                    navController = navController,
-                    startDestination = Screen.HeroList.route,
-                    builder = {
-                        addHeroList(
-                            navController = navController,
-                            imageLoader = imageLoader,
-                            width = 300,
-                        )
-                        addHeroDetail(
-                            imageLoader = imageLoader,
-                            width = 300,
-                        )
-                    }
-                )
+                    val navController = rememberNavController()
+                    NavHost(
+                        navController = navController,
+                        startDestination = Screen.HeroList.route,
+                        builder = {
+                            composable(
+                                route = Screen.HeroList.route,
+                            ){
+                                val viewModel: HeroListViewModel = hiltViewModel()
+                                HeroList(
+                                    state = viewModel.state.value,
+                                    events = viewModel::onTriggerEvent,
+                                    navigateToDetailScreen = { heroId ->
+                                        navController.navigate("${Screen.HeroDetail.route}/$heroId")
+                                    },
+                                    imageLoader = imageLoader,
+                                )
+                            }
+                            composable(
+                                route = Screen.HeroDetail.route + "/{heroId}",
+                                arguments = Screen.HeroDetail.arguments,
+                            ){
+                                val viewModel: HeroDetailViewModel = hiltViewModel()
+                                HeroDetail(
+                                    state = viewModel.state.value,
+                                    events = viewModel::onTriggerEvent,
+                                    imageLoader = imageLoader
+                                )
+                            }
+                        }
+                    )
             }
         }
     }
