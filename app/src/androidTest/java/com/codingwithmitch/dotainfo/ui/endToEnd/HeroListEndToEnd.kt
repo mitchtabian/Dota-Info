@@ -147,55 +147,54 @@ class HeroListEndToEnd {
 
     @Test
     fun testSearchHeroByName(){
+        composeTestRule.onRoot(useUnmergedTree = true).printToLog("TAG") // For learning the ui tree system
+
         composeTestRule.onNodeWithTag(TAG_HERO_SEARCH_BAR).performTextInput("Anti-Mage")
         composeTestRule.onNodeWithTag(TAG_HERO_NAME, useUnmergedTree = true).assertTextEquals(
             "Anti-Mage",
-            includeEditableText = false,
         )
         composeTestRule.onNodeWithTag(TAG_HERO_SEARCH_BAR).performTextClearance()
 
         composeTestRule.onNodeWithTag(TAG_HERO_SEARCH_BAR).performTextInput("Storm Spirit")
         composeTestRule.onNodeWithTag(TAG_HERO_NAME, useUnmergedTree = true).assertTextEquals(
             "Storm Spirit",
-            includeEditableText = false,
         )
         composeTestRule.onNodeWithTag(TAG_HERO_SEARCH_BAR).performTextClearance()
 
         composeTestRule.onNodeWithTag(TAG_HERO_SEARCH_BAR).performTextInput("Mirana")
         composeTestRule.onNodeWithTag(TAG_HERO_NAME, useUnmergedTree = true).assertTextEquals(
             "Mirana",
-            includeEditableText = false,
         )
     }
 
     @Test
     fun testFilterHeroAlphabetically(){
         // Show the dialog
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_BTN, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_BTN).performClick()
 
         // Confirm the filter dialog is showing
         composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DIALOG).assertIsDisplayed()
 
         // Filter by "Hero" name
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_HERO_CHECKBOX, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_HERO_CHECKBOX).performClick()
 
         // Order Descending (z-a)
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DESC, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DESC).performClick()
 
         // Close the dialog
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DIALOG_DONE, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DIALOG_DONE).performClick()
 
         // Confirm the order is correct
         composeTestRule.onAllNodesWithTag(TAG_HERO_NAME, useUnmergedTree = true).assertAny(hasText("Zeus"))
 
         // Show the dialog
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_BTN, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_BTN).performClick()
 
         // Order Ascending (a-z)
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_ASC, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_ASC).performClick()
 
         // Close the dialog
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DIALOG_DONE, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DIALOG_DONE).performClick()
 
         // Confirm the order is correct
         composeTestRule.onAllNodesWithTag(TAG_HERO_NAME, useUnmergedTree = true).assertAny(hasText("Abaddon"))
@@ -204,31 +203,31 @@ class HeroListEndToEnd {
     @Test
     fun testFilterHeroByProWins(){
         // Show the dialog
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_BTN, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_BTN).performClick()
 
         // Confirm the filter dialog is showing
         composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DIALOG).assertIsDisplayed()
 
         // Filter by ProWin %
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_PROWINS_CHECKBOX, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_PROWINS_CHECKBOX).performClick()
 
         // Order Descending (100% - 0%)
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DESC, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DESC).performClick()
 
         // Close the dialog
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DIALOG_DONE, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DIALOG_DONE).performClick()
 
         // Confirm the order is correct
         composeTestRule.onAllNodesWithTag(TAG_HERO_NAME, useUnmergedTree = true).assertAny(hasText("Chen"))
 
         // Show the dialog
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_BTN, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_BTN).performClick()
 
         // Order Ascending (0% - 100%)
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_ASC, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_ASC).performClick()
 
         // Close the dialog
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DIALOG_DONE, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DIALOG_DONE).performClick()
 
         // Confirm the order is correct
         composeTestRule.onAllNodesWithTag(TAG_HERO_NAME, useUnmergedTree = true).assertAny(hasText("Dawnbreaker"))
@@ -237,15 +236,15 @@ class HeroListEndToEnd {
     @Test
     fun testFilterHeroByStrength(){
         // Show the dialog
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_BTN, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_BTN).performClick()
 
         // Confirm the filter dialog is showing
         composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DIALOG).assertIsDisplayed()
 
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_STENGTH_CHECKBOX, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_STENGTH_CHECKBOX).performClick()
 
         // Close the dialog
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DIALOG_DONE, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DIALOG_DONE).performClick()
 
         // Confirm that only STRENGTH heros are showing
         composeTestRule.onAllNodesWithTag(TAG_HERO_PRIMARY_ATTRIBUTE, useUnmergedTree = true).assertAll(hasText(HeroAttribute.Strength.uiValue))
@@ -254,15 +253,15 @@ class HeroListEndToEnd {
     @Test
     fun testFilterHeroByAgility(){
         // Show the dialog
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_BTN, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_BTN).performClick()
 
         // Confirm the filter dialog is showing
         composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DIALOG).assertIsDisplayed()
 
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_AGILITY_CHECKBOX, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_AGILITY_CHECKBOX).performClick()
 
         // Close the dialog
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DIALOG_DONE, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DIALOG_DONE).performClick()
 
         // Confirm that only STRENGTH heros are showing
         composeTestRule.onAllNodesWithTag(TAG_HERO_PRIMARY_ATTRIBUTE, useUnmergedTree = true).assertAll(hasText(HeroAttribute.Agility.uiValue))
@@ -271,15 +270,15 @@ class HeroListEndToEnd {
     @Test
     fun testFilterHeroByIntelligence(){
         // Show the dialog
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_BTN, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_BTN).performClick()
 
         // Confirm the filter dialog is showing
         composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DIALOG).assertIsDisplayed()
 
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_INT_CHECKBOX, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_INT_CHECKBOX).performClick()
 
         // Close the dialog
-        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DIALOG_DONE, useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(TAG_HERO_FILTER_DIALOG_DONE).performClick()
 
         // Confirm that only STRENGTH heros are showing
         composeTestRule.onAllNodesWithTag(TAG_HERO_PRIMARY_ATTRIBUTE, useUnmergedTree = true).assertAll(hasText(HeroAttribute.Intelligence.uiValue))
