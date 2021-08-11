@@ -1,5 +1,6 @@
 package com.codingwithmitch.hero_datasource_test.network
 
+import com.codingwithmitch.hero_datasource.network.HeroService
 import com.codingwithmitch.hero_datasource.network.HeroServiceImpl
 import com.codingwithmitch.hero_datasource_test.network.data.HeroDataEmpty
 import com.codingwithmitch.hero_datasource_test.network.data.HeroDataMalformed
@@ -19,7 +20,7 @@ class HeroServiceFake {
 
         fun build(
             type: HeroServiceResponseType
-        ): HeroServiceImpl {
+        ): HeroService {
             val client = HttpClient(MockEngine) {
                 install(JsonFeature) {
                     serializer = KotlinxSerializer(
