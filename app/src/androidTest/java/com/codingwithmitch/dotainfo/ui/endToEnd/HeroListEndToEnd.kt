@@ -110,10 +110,12 @@ class HeroListEndToEnd {
                     builder = {
                         addHeroList(
                             navController = navController,
-                            imageLoader = imageLoader
+                            imageLoader = imageLoader,
+                            width = 300,
                         )
                         addHeroDetail(
-                            imageLoader = imageLoader
+                            imageLoader = imageLoader,
+                            width = 300,
                         )
                     }
                 )
