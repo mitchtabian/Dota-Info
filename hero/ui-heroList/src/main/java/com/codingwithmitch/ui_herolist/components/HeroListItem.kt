@@ -20,9 +20,9 @@ import androidx.compose.ui.unit.dp
 import coil.ImageLoader
 import coil.compose.rememberImagePainter
 import com.codingwithmitch.hero_domain.Hero
+import com.codingwithmitch.ui_herolist.R
 import com.codingwithmitch.ui_herolist.ui.test.TAG_HERO_NAME
 import com.codingwithmitch.ui_herolist.ui.test.TAG_HERO_PRIMARY_ATTRIBUTE
-import com.codingwithmitch.ui_herolist.R
 import kotlin.math.round
 
 @ExperimentalAnimationApi

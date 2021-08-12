@@ -75,11 +75,11 @@ fun HeroListToolbar(
                     .clickable {
                         onShowFilterDialog()
                     }
+                    .testTag(TAG_HERO_FILTER_BTN)
             ) {
                 Icon(
                     modifier = Modifier
                         .padding(8.dp)
-                        .testTag(TAG_HERO_FILTER_BTN)
                     ,
                     imageVector = Icons.Filled.MoreVert,
                     contentDescription = "Filter Icon"
