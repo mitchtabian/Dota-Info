@@ -15,7 +15,7 @@ android {
         targetSdk = Android.targetSdk
         versionCode = Android.versionCode
         versionName = Android.versionName
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.codingwithmitch.dotainfo.CustomTestRunner"
     }
 
     buildTypes {
@@ -71,6 +71,13 @@ dependencies{
     kapt(Hilt.compiler)
 
     implementation(SqlDelight.androidDriver)
+
+    androidTestImplementation(project(Modules.heroDataSourceTest))
+    androidTestImplementation(AndroidXTest.runner)
+    androidTestImplementation(ComposeTest.uiTestJunit4)
+    androidTestImplementation(HiltTest.hiltAndroidTesting)
+    kaptAndroidTest(Hilt.compiler)
+    androidTestImplementation(Junit.junit4)
 }
 
 
