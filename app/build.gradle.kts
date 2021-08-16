@@ -45,6 +45,7 @@ android {
 
 dependencies{
     implementation(project(Modules.core))
+    implementation(project(Modules.heroDataSource))
     implementation(project(Modules.heroDomain))
     implementation(project(Modules.heroInteractors))
     implementation(project(Modules.ui_heroList))
