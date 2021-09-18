@@ -56,11 +56,9 @@ constructor(
                 removeHeadMessage()
             }
             is HeroListEvents.Error -> {
-                if(event.uiComponent is UIComponent.None){
-                    logger.log("getHeros: ${(event.uiComponent as UIComponent.None).message}")
-                }
-                else{
-                    appendToMessageQueue(event.uiComponent)
+                when (val uiComponent = event.uiComponent) {
+                    is UIComponent.None -> logger.log("getHeros: ${uiComponent.message}")
+                    else -> appendToMessageQueue(uiComponent)
                 }
             }
         }
@@ -101,11 +99,9 @@ constructor(
                     filterHeros()
                 }
                 is DataState.Response -> {
-                    if(dataState.uiComponent is UIComponent.None){
-                        logger.log("getHeros: ${(dataState.uiComponent as UIComponent.None).message}")
-                    }
-                    else{
-                        appendToMessageQueue(dataState.uiComponent)
+                    when (val uiComponent = dataState.uiComponent) {
+                        is UIComponent.None -> logger.log("getHeros: ${uiComponent.message}")
+                        else -> appendToMessageQueue(uiComponent)
                     }
                 }
             }
