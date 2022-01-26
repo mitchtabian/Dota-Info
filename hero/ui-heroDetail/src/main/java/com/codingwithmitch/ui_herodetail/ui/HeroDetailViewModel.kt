@@ -9,6 +9,7 @@ import com.codingwithmitch.core.domain.DataState
 import com.codingwithmitch.core.domain.Queue
 import com.codingwithmitch.core.domain.UIComponent
 import com.codingwithmitch.core.util.Logger
+import com.codingwithmitch.core.util.factory.LoggerFactory
 import com.codingwithmitch.hero_interactors.GetHeroFromCache
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
@@ -21,9 +22,10 @@ class HeroDetailViewModel
 constructor(
     private val getHeroFromCache: GetHeroFromCache,
     private val savedStateHandle: SavedStateHandle,
-    private val logger: Logger,
+    loggerFactory: LoggerFactory
 ): ViewModel(){
 
+    private var logger: Logger = loggerFactory.createLogger("HeroDetailViewModel")
     val state: MutableState<HeroDetailState> = mutableStateOf(HeroDetailState())
 
     init {

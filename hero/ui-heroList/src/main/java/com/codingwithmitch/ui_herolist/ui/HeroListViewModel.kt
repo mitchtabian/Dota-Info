@@ -8,6 +8,7 @@ import com.codingwithmitch.core.domain.DataState
 import com.codingwithmitch.core.domain.Queue
 import com.codingwithmitch.core.domain.UIComponent
 import com.codingwithmitch.core.util.Logger
+import com.codingwithmitch.core.util.factory.LoggerFactory
 import com.codingwithmitch.hero_domain.HeroAttribute
 import com.codingwithmitch.hero_domain.HeroFilter
 import com.codingwithmitch.hero_interactors.FilterHeros
@@ -23,9 +24,10 @@ class HeroListViewModel
 constructor(
     private val getHeros: GetHeros,
     private val filterHeros: FilterHeros,
-    private val logger: Logger,
+    loggerFactory: LoggerFactory
 ): ViewModel(){
 
+    private var logger: Logger = loggerFactory.createLogger("HeroListViewModel")
     val state: MutableState<HeroListState> = mutableStateOf(HeroListState())
 
     init {
