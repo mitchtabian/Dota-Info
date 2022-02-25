@@ -69,7 +69,7 @@ fun NavGraphBuilder.addHeroList(
 ) {
     composable(
         route = Screen.HeroList.route,
-        exitTransition = {_, _ ->
+        exitTransition = {
             slideOutHorizontally(
                 targetOffsetX = { -width },
                 animationSpec = tween(
@@ -78,7 +78,7 @@ fun NavGraphBuilder.addHeroList(
                 )
             ) + fadeOut(animationSpec = tween(300))
         },
-        popEnterTransition = { initial, _ ->
+        popEnterTransition = {
             slideInHorizontally(
                 initialOffsetX = { -width },
                 animationSpec = tween(
@@ -108,7 +108,7 @@ fun NavGraphBuilder.addHeroDetail(
     composable(
         route = Screen.HeroDetail.route + "/{heroId}",
         arguments = Screen.HeroDetail.arguments,
-        enterTransition = { _, _ ->
+        enterTransition = {
             slideInHorizontally(
                 initialOffsetX = { width },
                 animationSpec = tween(
@@ -117,7 +117,7 @@ fun NavGraphBuilder.addHeroDetail(
                 )
             ) + fadeIn(animationSpec = tween(300))
         },
-        popExitTransition = { _, target ->
+        popExitTransition = {
             slideOutHorizontally(
                 targetOffsetX = { width },
                 animationSpec = tween(

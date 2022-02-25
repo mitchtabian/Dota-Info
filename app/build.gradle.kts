@@ -8,7 +8,6 @@ plugins {
 
 android {
     compileSdk = Android.compileSdk
-    buildToolsVersion = Android.buildTools
 
     defaultConfig {
         applicationId = Android.appId
@@ -33,7 +32,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
-        useIR = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = Compose.composeVersion

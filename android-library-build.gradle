@@ -6,7 +6,6 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion Android.compileSdk
-    buildToolsVersion Android.buildTools
 
     defaultConfig {
         minSdkVersion Android.minSdk
@@ -35,7 +34,6 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion Compose.composeVersion
-        kotlinCompilerVersion Kotlin.version
     }
     packagingOptions {
         exclude("META-INF/AL2.0")
